@@ -1,3 +1,40 @@
-.logo{
-    width: 30%;
+.header-container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 1rem; 
+    background-color: navajowhite;
+    height:15vh; 
 }
+
+.nav {
+    display: flex; 
+}
+
+.link {
+    text-decoration: none; 
+    color: #333; 
+    font-size: 1.2rem; 
+    margin-right: 1rem; 
+    padding: 0.5rem 1rem; 
+    background-color: #fff; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.link:hover {
+    background-color: #eee; 
+}
+
+.heading {
+    font-size: 4rem; 
+    margin: 0; 
+}
+
+.logo {
+    width: 150px; 
+    height: auto; 
+    margin-left: 0; 
+}
+
