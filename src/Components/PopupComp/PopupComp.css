@@ -1,0 +1,23 @@
+.popup-container {
+    position: fixed; /* מציין שהקונטיינר יהיה קבוע במקום על המסך */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* שקוף שחור בחצי-שקיפות כקישוט לרקע */
+    display: flex; /* מפעיל flexbox על הקונטיינר */
+    justify-content: center; /* ממריץ את האלמנטים במרכז לכיוון אופק */
+    align-items: center; /* ממריץ את האלמנטים במרכז לכיוון אנכי */
+  }
+  
+  .popup-modal {
+    background-color: white; /* צביעת רקע המודל בלבן */
+    padding: 20px; /* הוספת רווחים לתוך המודל */
+    border-radius: 8px; /* מעגלים את הפינות של המודל */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* מוסיף צל למודל */
+  }
+  
+  .popup-modal h2 {
+    margin-top: 0; /* מגדיר את רווח העליון של הכותרת לאפס */
+  }
+  

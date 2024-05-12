@@ -1,0 +1,12 @@
+
+  
+  .login-modal {
+    
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-modal h2 {
+    margin-top: 0;
+  }
+  
