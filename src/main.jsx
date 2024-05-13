@@ -51,10 +51,10 @@ const router = createBrowserRouter([
     path: '/student-personal',
     element: <StudentPersonalAreaPage /> 
   },
-  {
-    path: '/student-cours',
-    element: <StudentCoursPage /> 
-  },
+  // {
+  //   path: '/student-cours',
+  //   element: <StudentCoursPage /> 
+  // },
   {
     path: '/login',
     element: <StudentLoginComp /> 
