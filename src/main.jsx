@@ -13,6 +13,10 @@ import StudentCoursPage from './StudentCoursPage/StudentCoursPage.jsx'
 import StudentLoginComp from './Components/Login/StudentLoginConp/StudentLoginComp.jsx'
 import EnrollmentStudent from './Components/Login/EnrollmentStudent/EnrollmentStudent.jsx'
 import TestPage from './Pages/TestPage/TestPage.jsx'
+import Show from './Components/Langugase/Langugase.jsx'
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -23,6 +27,9 @@ const router = createBrowserRouter([
   {
     path: '/test',
     element: <TestPage /> 
+  },
+  {path: '/langugase',
+    element: <Show/>
   },
   {
     path: '/lecturers',
