@@ -14,6 +14,7 @@ import StudentLoginComp from './Components/Login/StudentLoginConp/StudentLoginCo
 import EnrollmentStudent from './Components/Login/EnrollmentStudent/EnrollmentStudent.jsx'
 import TestPage from './Pages/TestPage/TestPage.jsx'
 import Show from './Components/Langugase/Langugase.jsx'
+import LecturersByLanguage from './Pages/LecturersPage/LectureresPage.jsx'
 
 
 
@@ -32,8 +33,8 @@ const router = createBrowserRouter([
     element: <Show/>
   },
   {
-    path: '/lecturers',
-    element: <LectureresPage /> 
+    path: '/product/:productId',
+    element: <LecturersByLanguage /> 
   },
   {
     path: '/lecturer',

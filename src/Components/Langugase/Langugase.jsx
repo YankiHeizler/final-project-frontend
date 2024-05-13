@@ -1,5 +1,5 @@
 
-
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Langugase.css';
@@ -10,6 +10,7 @@ const ProductCard = ({ product }) => {
       <div className="product-details">
         <h3>{product.lang}</h3>
         <h2>{product.langPres}</h2>
+        <Link to={`/product/${product.lang}`}>לפרטים נוספים</Link>
       </div>
     </div>
   );
