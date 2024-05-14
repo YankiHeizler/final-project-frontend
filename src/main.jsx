@@ -19,6 +19,7 @@ import LecturersByLanguage from './Pages/LecturersPage/LectureresPage.jsx'
 
 
 
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -32,12 +33,12 @@ const router = createBrowserRouter([
   {path: '/langugase',
     element: <Show/>
   },
-  {
-    path: '/product/:productId',
-    element: <LecturersByLanguage /> 
+  {path: '/product/:language',
+    element: <LecturersByLanguage /> ,
+  
+    
   },
-  {
-    path: '/lecturer',
+  {path: '/lecturer',
     element: <LecturerePage /> 
   },
   {

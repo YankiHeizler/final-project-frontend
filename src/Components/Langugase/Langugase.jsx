@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
       <div className="product-details">
         <h3>{product.lang}</h3>
         <h2>{product.langPres}</h2>
-        <Link to={`/product/${product.lang}`}>לפרטים נוספים</Link>
+        <Link to={`/product/${product._id}`}>לפרטים נוספים</Link>
       </div>
     </div>
   );
