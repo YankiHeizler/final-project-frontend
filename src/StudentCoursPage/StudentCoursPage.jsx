@@ -26,4 +26,4 @@ const StudentCoursPage = () => {
   )
 }
 
-export default {StudentCoursPage ,StudentCoursPage}
+export default {StudentCoursPage }

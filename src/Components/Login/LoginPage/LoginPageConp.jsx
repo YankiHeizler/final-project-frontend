@@ -1,46 +1,75 @@
 import React, { useState } from 'react';
 import './LoginPageStyile.css'
-function Login({ fields , punct}) {
-    const [data, setData] = useState({});
-    
-    
-    const handleChange = (event) => {
-    const newData = { ...data };
-    newData[event.target.name] = event.target.value;
-    setData(newData);
-    };
-  
-    
-    
-  
-    return (
-        <>
-        <div className="login-modal">
-        <h2> כניסה </h2>
-        {fields.map((pra) => 
-        // <input type={pra.type} name={pra.name}
-        // placeholder = {pra.name}
-        // onChange={handleChange}
-        // />
-        <div key={pra.id}>
-          <p>{pra.name}</p>
-          {pra.options ? (
-            <select>
-              {pra.options.map((opt )=> (
-                <option key={opt} value={opt}>{opt}</option>
-              ))}
-            </select>
-          ) : (
-            <input type="text" />
-          )}
-        </div>
-        )}
-        <button onClick={punct}> אישור </button>
-        
-        
-      </div>
-      </>
-    );
+
+
+function Login({ fields, func , titel }) {
+
+  const tetKeys = (field) => {
+    const keys = {}
+    field.map((f) => {
+      keys[f.name] = f.default
+    })
+    return keys
   }
-  
-  export default Login;
+
+  const [data, setData] = useState(tetKeys(fields));
+  const [error, setError] = useState('')
+
+  const handleChange = (event) => {
+    const { name, value, type, checked } = event.target
+    const newData = { ...data };
+    (type == 'text') ?
+
+      newData[name] = value : newData[name] = checked
+
+    setData(newData);
+    console.log(newData);
+  };
+
+  const Submit = async (e) => {
+    e.preventDefault()
+    try {
+      await func(data)
+    } catch (error) {
+      setError(error.message)
+    }
+    e.reset()
+  }
+
+
+
+  return (
+    <>
+      <div className="login-modal">
+        <h2> {titel }</h2>
+        <form onSubmit={e => Submit(e)} onChange={handleChange}>
+          {fields.map((pra) =>
+            <div key={pra.name}>
+              <p>
+                {pra.required ? (
+                  <label>* {pra.titel}</label>
+                ) : <label>{pra.titel}</label>}
+              </p>
+              {pra.options ? (
+                <select name={pra.name} >
+                  {pra.options.map((opt) => (
+                    <option key={opt} value={opt} id={opt}>{opt}</option>
+                  ))}
+                </select>
+              ) :
+                (<input name={pra.name} type={pra.type} required={pra.required} />
+                )}
+            </div>
+
+
+          )}
+          <input type="submit" />
+        </form>
+        {error && <div>{error}</div>}
+
+      </div>
+
+    </>
+  );
+}
+export default Login;
