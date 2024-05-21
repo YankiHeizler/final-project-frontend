@@ -15,6 +15,9 @@ import EnrollmentStudent from './Components/Login/EnrollmentStudent/EnrollmentSt
 import TestPage from './Pages/TestPage/TestPage.jsx'
 import Show from './Components/Langugase/Langugase.jsx'
 import LecturersByLanguage from './Pages/LecturersPage/LectureresPage.jsx'
+import LecturerDetails from './Pages/LecturerePage/LecturerePage.jsx'
+import LecturerDetailsPage from './Pages/LecturerePage/LecturerePage.jsx'
+import { About } from './Components/About/About.jsx'
 
 
 
@@ -35,12 +38,13 @@ const router = createBrowserRouter([
   },
   {path: '/product/:language',
     element: <LecturersByLanguage /> ,
-  
-    
+    },
+  {path: '/product/lectors/:lecturerId',
+    element: <LecturerDetailsPage />
   },
-  {path: '/lecturer',
-    element: <LecturerePage /> 
-  },
+  // {path: '/lecturer',
+  //   element: <LecturerePage /> 
+  // },
   {
     path: '/schedule',
     element: <SchedulePage /> 
@@ -60,6 +64,11 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <StudentLoginComp /> 
+    
+  },
+  {
+    path: '/About',
+    element: <About />,
   },
   {
     path: '/student-enrollment',

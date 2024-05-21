@@ -1,13 +1,16 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import HeaderComp from '../../Components/Header/HeaderComp';
+import './LecturersePage.css'
+
 
 
 const LecturersByLanguage = () => {
   const { language } = useParams(); 
   const [lecturers, setLecturers] = useState([]);
   const [error, setError] = useState(null); 
+  console.log(language)
 
   useEffect(() => {
     const fetchLecturers = async () => {
@@ -16,12 +19,13 @@ const LecturersByLanguage = () => {
         const fetchedLecturers = response.data.lectors || [];
 
         console.log(response.data.lectors);
+        console.log(language)
         const filteredLecturers = fetchedLecturers.filter(lecturer =>
           lecturer.lecLangs && lecturer.lecLangs.includes(language)
         );
 
-        setLecturers(filteredLecturers);
-        console.log(lecturers)
+        setLecturers(response.data.lectors);
+
         setError(null);
       } catch (err) { 
         console.error('Error fetching lecturers:', err);
@@ -36,13 +40,18 @@ const LecturersByLanguage = () => {
     return <div className="error">Error: {error}</div>;
   }
 
+  console.log(lecturers)
+
   const LecturerCard = ({ product }) => {
     return (
       <div className="product-card" key={product._id}>
         <div className="product-details">
           <h3>{product.lecFName}</h3>
           <h3>{product.lecLName}</h3>
-          {/* <Link to={`/product/${product._id}`}>לפרטים נוספים</Link> */}
+          <h3>{product._id}</h3>
+          <img src="{product.lecFoto}" alt="photo" />
+          <Link to={`/product/lectors/${product._id}`}>לפרטי המרצה</Link>
+
         </div>
       </div>
     );
@@ -58,21 +67,12 @@ const LecturersByLanguage = () => {
     );
   };
 
-//   return (
-//     <div>
-//       <h1>מרצים שמלמדים </h1>
 
-//       {lecturers.map((lecturer) => (
-//         <p key={lecturer._id}>{lecturer.lecLName}</p>
-//       ))}
-//     </div>
-//   );
-// };
 
 return (
   <div>
     <HeaderComp/>
-    <h1>מרצים</h1>
+    
     <ProductList products={lecturers} />
   </div>
 );
