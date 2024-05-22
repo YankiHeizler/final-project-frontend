@@ -17,7 +17,7 @@ import Show from './Components/Langugase/Langugase.jsx'
 import LecturersByLanguage from './Pages/LecturersPage/LectureresPage.jsx'
 import LecturerDetails from './Pages/LecturerePage/LecturerePage.jsx'
 import LecturerDetailsPage from './Pages/LecturerePage/LecturerePage.jsx'
-import { About } from './Components/About/About.jsx'
+import  AboutPage  from './Components/About/About.jsx'
 
 
 
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/About',
-    element: <About />,
+    element: <AboutPage />,
   },
   {
     path: '/student-enrollment',

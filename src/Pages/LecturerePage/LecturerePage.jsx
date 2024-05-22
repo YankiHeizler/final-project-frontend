@@ -1,7 +1,7 @@
 
 
-import React, { useState, useEffect, Link } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect, } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import HeaderComp from '../../Components/Header/HeaderComp';
 import './LecturerePage.css'
@@ -44,19 +44,19 @@ const LecturerDetailsPage = () => {
       <div className="lecturer-card" >
         
         <div className="lecturer-details">
+        <img src="{product.lecFoto}" alt="photo" />
           <h3>{lecturer.lecFName}</h3>
           <h3>{lecturer.lecLName}</h3>
           <h3>{lecturer._id}</h3>
           <h3>השכלה: {lecturer.lecEduc}</h3>
           <h3>שפת אם: {lecturer.lecMotherLang}</h3>
 
-          <img src="{product.lecFoto}" alt="photo" />
-          {/* <Link to={'/login'} className='link'>להתחברות/הרשמה</Link> */}
+          <button><Link to={'/login'} className='link'>לקביעת שיעור עם המרצה</Link></button>
 
 
         </div>
       </div>
-      {/* <button><Link to={'/login'} className='link'>להתחברות/הרשמה</Link></button> */}
+
 
       </>
     );
