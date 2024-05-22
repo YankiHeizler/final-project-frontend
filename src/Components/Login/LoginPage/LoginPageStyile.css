@@ -9,4 +9,20 @@
   .login-modal h2 {
     margin-top: 0;
   }
-  
+  .login-modal p {
+    margin-bottom: 0;
+  }
+  .login-modal p .asterisk {
+    color: red;
+  }
+  .deys{
+    display: flex;
+  }
+  .deys div {
+    height: 700px;
+    width: 90px;
+  }
+  .deys div div {
+    height: 20px;
+    width: 70px;
+  }

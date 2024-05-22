@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Popup from '../../PopupComp/PopupComp'
 import Login from '../LoginPage/LoginPageConp';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate, Link} from 'react-router-dom';
 import {CREATSTUDENTURL} from '../../../URLS'
+import axios from 'axios';
+
 const EnrollmentStudent = () => {
 
   const data = [
@@ -13,8 +15,7 @@ const EnrollmentStudent = () => {
       {name:'studPhone',titel:'מס טלפון',type:'txte',required:true ,default:''},
       {name:'studEmail',titel:'אימייל',type:'email',required:true,default:''},
       {name:'studPass',titel:'סיסמה',type:'txte',required:true ,default:''}
-      ,
-      // {name:'',titel:'מגדר',type:'txte',options:["זכר","נקבה"],required:true ,default:'זכר'}
+      
       ]
         
         const [isOpen, setIsOpen] = useState(true);
@@ -27,13 +28,16 @@ const EnrollmentStudent = () => {
         };
         const login = async ({ data }) => {
           const url = CREATSTUDENTURL
-            const res = await axios.post(url, data )
+          const userDetails =data
+            const res = await axios.post(url, {userDetails} )
             console.log(res.data);
         }
   return (
     <>
     <Popup open={isOpen} closeFn={togglePopup}>
         <Login fields={data} titel={'הרשמה לסטודנט'} func={login}/>
+        <Link to={'/lecturer-enrollment'} > יצירת מרצה חדש </Link>
+
     </Popup>
     </>
   )

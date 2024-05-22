@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './LoginPageStyile.css'
+import MultipleCompo from '../../MultipleCompo/MultipleCompo';
 
-
-function Login({ fields, func , titel }) {
+function Login({ fields, func, titel }) {
 
   const tetKeys = (field) => {
     const keys = {}
@@ -17,55 +17,118 @@ function Login({ fields, func , titel }) {
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target
+    // console.log(name);
+    // console.log(type);
+    // console.log(value);
     const newData = { ...data };
-    (type == 'text') ?
+    (type && type == 'checkbox') ?
 
-      newData[name] = value : newData[name] = checked
-
+      newData[name] = checked : newData[name] = value
+    console.log(checked);
     setData(newData);
     console.log(newData);
   };
 
+  const multipleOnChange = (event) => {
+    const { name, value, checked } = event.target
+    // console.log(event);
+    // console.log(name);
+    // console.log(value);
+    // console.log(checked);
+    // console.log('xxxxxxxxxxxxxxxxxx');
+    const newData = { ...data };
+    // const [selectedOptions, setSelectedOptions] = useState([]);
+    if (checked) {
+      newData[name] = [...newData[name], value];
+    }
+    else {
+      newData[name] = newData[name].filter((opt) => opt !== value);
+    }
+    setData(newData);
+    console.log(newData);
+
+
+  }
+  const updateFormData = (event) => {
+    const { name, value, checked } = event.target
+    // console.log(event);
+    // console.log(key);
+    // console.log(`name:${name}`);
+    // console.log(value);
+    // console.log(checked);
+    // console.log('xxxxxxxxxxxxxxxxxx');
+    const newData = { ...data };
+    // console.log(newData.lecTimeTable);
+    // const [selectedOptions, setSelectedOptions] = useState([]);
+    
+    // if(!newData.lecTimeTable.name){
+    //   newData.lecTimeTable[name] = []
+    // }
+    if (checked) {
+      newData.lecTimeTable[name].push(value);
+    }
+    else {
+      newData.lecTimeTable[name] = newData.lecTimeTable[name].filter((opt) => opt !== value);
+    }
+    setData(newData);
+    console.log(newData.lecTimeTable);
+    console.log(newData);
+
+
+  }
+
   const Submit = async (e) => {
     e.preventDefault()
     try {
+      console.log(data);
       await func(data)
     } catch (error) {
       setError(error.message)
     }
-    e.reset()
+    // e.target.reset()
   }
-
-
-
   return (
     <>
       <div className="login-modal">
-        <h2> {titel }</h2>
-        <form onSubmit={e => Submit(e)} onChange={handleChange}>
-          {fields.map((pra) =>
+        <h2> {titel}</h2>
+        <form onSubmit={Submit} >
+          {fields.map((pra,index) =>
             <div key={pra.name}>
               <p>
                 {pra.required ? (
-                  <label>* {pra.titel}</label>
+                  <label><span className="asterisk">*</span> {pra.titel}</label>
                 ) : <label>{pra.titel}</label>}
               </p>
-              {pra.options ? (
-                <select name={pra.name} >
-                  {pra.options.map((opt) => (
-                    <option key={opt} value={opt} id={opt}>{opt}</option>
-                  ))}
-                </select>
-              ) :
-                (<input name={pra.name} type={pra.type} required={pra.required} />
-                )}
-            </div>
+              {
+                pra.deys ?
+                  (
+                    <div className='deys'>
+                    {pra.deys.map((d) => (
+                      <MultipleCompo key={d} pra={pra} onChange={updateFormData} name={d}/>
+                      ))}
+                      </div>
+
+                      )
+                      : pra.multiple ?
+                      (
+                      <MultipleCompo pra={pra} onChange={multipleOnChange} />
+                      )
+                      : pra.options ? (
+                      <select  id={`${pra.name}-${index}`} name={pra.name} multiple={pra.multiple} onChange={handleChange} >
+                        {pra.options.map((opt) => (
+                          <option key={opt} value={opt} id={opt}>{opt}</option>
+                        ))}
+                      </select>
+                      ) :
+                      (<input id={`${pra.name}-${index}`} name={pra.name} type={pra.type} required={pra.required} onChange={handleChange} />
+                      )}
+                    </div>
 
 
-          )}
-          <input type="submit" />
-        </form>
-        {error && <div>{error}</div>}
+                  )}
+              <input type="submit" />
+            </form>
+        { error && <div>error:{error}</div>}
 
       </div>
 
@@ -73,3 +136,12 @@ function Login({ fields, func , titel }) {
   );
 }
 export default Login;
+
+// <div className='ex1' name = {pra.name}  onChange={multipleOnChange} >
+//   {pra.options.map((opt) => (
+//     <div key={opt}>
+//     <input type='checkbox' name={pra.name} value={opt} id={opt} />
+//     <label htmlFor={opt}>{opt}</label>
+//   </div>
+//   ))}
+// </div>

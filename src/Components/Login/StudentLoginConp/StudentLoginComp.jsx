@@ -7,8 +7,8 @@ import { Link ,useNavigate} from 'react-router-dom';
 import { LOGINLECTURERURL, LOGINSTUDENTURL } from '../../../URLS.js'
 const StudentLoginComp = () => {
   const data = [
-    { name: 'userName', titel: 'שם', type: 'txte', required: true ,default:'' },
-    { name: 'password', titel: 'סיסמה', type: 'txte', required: true ,default:''},
+    { name: 'Email', titel: 'מייל', type: 'txte', required: true ,default:'' },
+    { name: 'Pass', titel: 'סיסמה', type: 'txte', required: true ,default:''},
     { name: 'isLecturerurl', titel: 'כניסה למרצה', type: 'checkbox' ,default: false}
   ]
 
@@ -37,14 +37,26 @@ const StudentLoginComp = () => {
   // }
 
 
-  const login = async ({ data }) => {
-    const url = data.isLecturerurl ?
-      LOGINLECTURERURL :
-      LOGINSTUDENTURL
+  const login = async (data) => {
+    // console.log(data);
 
-    const { userName, password } = data 
+    const { Pass, Email, isLecturerurl } = data;
+const url = isLecturerurl ? LOGINLECTURERURL : LOGINSTUDENTURL;
+console.log(url);
 
-      const res = await axios.post(url, { userName, password })
+let userDetails;
+if (isLecturerurl) {
+  const lecPass = Pass;
+  const lecEmail = Email;
+  userDetails = { lecPass, lecEmail };
+} else {
+  const studPass = Pass;
+  const studEmail = Email;
+  userDetails = { studPass, studEmail };
+}
+
+console.log(userDetails );
+      const res = await axios.post(url, { userDetails })
       console.log(res.data);
       // return response.data;
   }
@@ -54,7 +66,11 @@ const StudentLoginComp = () => {
       <button onClick={togglePopup}>LOGIN</button>
       <Popup open={isOpen} closeFn={togglePopup}>
         <Login fields={data} func={login} titel={'כניסה'}/>
-        <Link to={'/student-enrollment'} > יצירת משתמש חדש </Link>
+        <div>
+        <Link to={'/student-enrollment'} > יצירת סטודנט חדש </Link>
+        <br/>
+        <Link to={'/lecturer-enrollment'} > יצירת מרצה חדש </Link>
+        </div>
       </Popup>
     </>
   )

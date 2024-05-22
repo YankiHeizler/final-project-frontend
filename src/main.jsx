@@ -9,10 +9,11 @@ import LecturerePage from './Pages/LecturerePage/LecturerePage.jsx'
 import SchedulePage from './Pages/SchedulePage/SchedulePage.jsx'
 import LecturerPersonalAreaPage from './Pages/LecturerPersonalAreaPage/LecturerPersonalAreaPage.jsx'
 import StudentPersonalAreaPage from './Pages/StudentPersonalAreaPage/StudentPersonalAreaPage.jsx'
-import StudentCoursPage from './StudentCoursPage/StudentCoursPage.jsx'
+// import StudentCoursPage from './StudentCoursPage/StudentCoursPage.jsx'
 import StudentLoginComp from './Components/Login/StudentLoginConp/StudentLoginComp.jsx'
 import EnrollmentStudent from './Components/Login/EnrollmentStudent/EnrollmentStudent.jsx'
 import TestPage from './Pages/TestPage/TestPage.jsx'
+import RegistrationPageLect from './Components/Login/Registration pageLect/Registration pageLect.jsx'
 
 const router = createBrowserRouter([
   {
@@ -44,10 +45,10 @@ const router = createBrowserRouter([
     path: '/student-personal',
     element: <StudentPersonalAreaPage /> 
   },
-  {
-    path: '/student-cours',
-    element: <StudentCoursPage /> 
-  },
+  // {
+  //   path: '/student-cours',
+  //   element: <StudentCoursPage /> 
+  // },
   {
     path: '/login',
     element: <StudentLoginComp /> 
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
   {
     path: '/student-enrollment',
     element: <EnrollmentStudent /> 
+  },
+  {
+    path: '/lecturer-enrollment',
+    element: <RegistrationPageLect /> 
   },
 
   
