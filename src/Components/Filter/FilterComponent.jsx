@@ -119,7 +119,7 @@ const FilterComponent = ({ onFilter }) => {
               checked={gender.male}
               onChange={() => handleCheckboxChange('gender', 'male')}
             />
-            זכר
+            גבר
           </label>
           <label>
             <input
@@ -127,12 +127,12 @@ const FilterComponent = ({ onFilter }) => {
               checked={gender.female}
               onChange={() => handleCheckboxChange('gender', 'female')}
             />
-            נקבה
+            אשה
           </label>
         </div>
       </div>
       <div className="filter-group">
-        <label>דרגה:</label>
+        <label>רמת הלימוד:</label>
         <div>
           <label>
             <input
@@ -140,7 +140,7 @@ const FilterComponent = ({ onFilter }) => {
               checked={ranks.junior}
               onChange={() => handleCheckboxChange('ranks', 'junior')}
             />
-            זוטר
+            בסיסית
           </label>
           <label>
             <input
@@ -148,7 +148,7 @@ const FilterComponent = ({ onFilter }) => {
               checked={ranks.mid}
               onChange={() => handleCheckboxChange('ranks', 'mid')}
             />
-            בינוני
+            ביניים
           </label>
           <label>
             <input
@@ -156,7 +156,7 @@ const FilterComponent = ({ onFilter }) => {
               checked={ranks.senior}
               onChange={() => handleCheckboxChange('ranks', 'senior')}
             />
-            בכיר
+            מתקדמת
           </label>
         </div>
       </div>

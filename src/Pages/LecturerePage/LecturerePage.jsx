@@ -18,7 +18,7 @@ const LecturerDetailsPage = () => {
         setLecturer(response.data.lectors[0]);
 
         console.log(response.data.lectors[0]);
-
+        console.log(lecturerId)
       } catch (err) {
         setError(err.message);
       }
