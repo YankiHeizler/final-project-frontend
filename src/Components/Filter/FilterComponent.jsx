@@ -1,82 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-
-// const LecturerFilter = ({ lecturers, onFilterChange }) => {
-//   const [genderFilter, setGenderFilter] = useState([]);
-//   const [knowledgeLevelFilter, setKnowledgeLevelFilter] = useState([]);
-//   const [searchTerm, setSearchTerm] = useState('');
-// //   const [filteredLecturers, setFilteredLecturers] = useState([]); 
-
-//   useEffect(() => {
-//     if (onFilterChange) {
-//       onFilterChange(filteredLecturers);
-//     }
-//   }, [filteredLecturers, onFilterChange]);
-
-//   const handleGenderFilterChange = (event) => {
-//     const selectedGender = event.target.value;
-//     if (event.target.checked) {
-//       setGenderFilter([...genderFilter, selectedGender]);
-//     } else {
-//       setGenderFilter(genderFilter.filter((g) => g !== selectedGender));
-//     }
-//   };
-
-//   const handleKnowledgeLevelFilterChange = (event) => {
-//     const selectedKnowledgeLevel = event.target.value;
-//     if (event.target.checked) {
-//       setKnowledgeLevelFilter([...knowledgeLevelFilter, selectedKnowledgeLevel]);
-//     } else {
-//       setKnowledgeLevelFilter(knowledgeLevelFilter.filter((kl) => kl !== selectedKnowledgeLevel));
-//     }
-//   };
-
-//   const handleSearchTermChange = (event) => {
-//     setSearchTerm(event.target.value);
-//   };
-
-//   const filteredLecturers = lecturers.filter((lecturer) => {
-//     return (
-//       genderFilter.length === 0 || genderFilter.includes(lecturer.gender) &&
-//       knowledgeLevelFilter.length === 0 || knowledgeLevelFilter.includes(lecturer.knowledgeLevel) &&
-//       lecturer.name.toLowerCase().includes(searchTerm.toLowerCase())
-//     );
-//   });
-
-//   return (
-//     <div>
-//       <h2>סינון מרצים</h2>
-//       <h3>מין</h3>
-//       <div>
-//         <input type="checkbox" value="גבר" onChange={handleGenderFilterChange} checked={genderFilter.includes('גבר')} />
-//         <label>גבר</label>
-//       </div>
-//       <div>
-//         <input type="checkbox" value="אישה" onChange={handleGenderFilterChange} checked={genderFilter.includes('אישה')} />
-//         <label>אישה</label>
-//       </div>
-//       <h3>רמת ידע</h3>
-//       <div>
-//         <input type="checkbox" value="מתחיל" onChange={handleKnowledgeLevelFilterChange} checked={knowledgeLevelFilter.includes('מתחיל')} />
-//         <label>מתחיל</label>
-//       </div>
-//       <div>
-//         <input type="checkbox" value="בינוני" onChange={handleKnowledgeLevelFilterChange} checked={knowledgeLevelFilter.includes('בינוני')} />
-//         <label>בינוני</label>
-//       </div>
-//       <div>
-//         <input type="checkbox" value="מתקדם" onChange={handleKnowledgeLevelFilterChange} checked={knowledgeLevelFilter.includes('מתקדם')} />
-//         <label>מתקדם</label>
-//       </div>
-//       <h3>חיפוש לפי שם</h3>
-//       <div>
-//         <input type="text" value={searchTerm} onChange={handleSearchTermChange} />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default LecturerFilter;
-
 import React, { useState } from 'react';
 import './FilterComponent.css';
 
@@ -92,6 +13,11 @@ const FilterComponent = ({ onFilter }) => {
     from30to50: false,
     over50: false,
   });
+  const [priceRange, setPriceRange] = useState({
+    under100: false,
+    from100to150: false,
+    over150: false,
+  });
 
   const handleCheckboxChange = (category, key) => {
     if (category === 'gender') {
@@ -100,11 +26,13 @@ const FilterComponent = ({ onFilter }) => {
       setRanks({ ...ranks, [key]: !ranks[key] });
     } else if (category === 'ageRange') {
       setAgeRange({ ...ageRange, [key]: !ageRange[key] });
+    } else if (category === 'priceRange') {
+      setPriceRange({ ...priceRange, [key]: !priceRange[key] });
     }
   };
 
   const handleFilterChange = () => {
-    onFilter({ gender, ranks, ageRange });
+    onFilter({ gender, ranks, ageRange, priceRange });
   };
 
   return (
@@ -132,7 +60,7 @@ const FilterComponent = ({ onFilter }) => {
         </div>
       </div>
       <div className="filter-group">
-        <label>רמת הלימוד:</label>
+        <label> רמת הלימוד:</label>
         <div>
           <label>
             <input
@@ -161,7 +89,7 @@ const FilterComponent = ({ onFilter }) => {
         </div>
       </div>
       <div className="filter-group">
-        <label>גיל:</label>
+        <label> גיל: </label>
         <div>
           <label>
             <input
@@ -186,6 +114,35 @@ const FilterComponent = ({ onFilter }) => {
               onChange={() => handleCheckboxChange('ageRange', 'over50')}
             />
             מעל 50
+          </label>
+        </div>
+      </div>
+      <div className="filter-group">
+        <label> תעריף לשיעור:</label>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={priceRange.under100}
+              onChange={() => handleCheckboxChange('priceRange', 'under100')}
+            />
+            מתחת ל-100
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={priceRange.from100to150}
+              onChange={() => handleCheckboxChange('priceRange', 'from100to150')}
+            />
+            בין 100 ל-150
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={priceRange.over150}
+              onChange={() => handleCheckboxChange('priceRange', 'over150')}
+            />
+            מעל 150
           </label>
         </div>
       </div>

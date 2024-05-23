@@ -1,11 +1,14 @@
 
 .filter-container {
-    width: 30%;
+    width: 20%;
     margin: 20px;
     padding: 20px;
     background-color: #f1f1f1;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    direction: rtl;
+    float: right;
+    flex: 1;
   }
   
   .filter-container h3 {

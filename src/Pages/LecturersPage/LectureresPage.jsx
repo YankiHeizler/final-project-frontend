@@ -29,14 +29,14 @@ const LecturersByLanguage = () => {
   }, [language]);
 
   const handleFilter = (filters) => {
-    const { gender, ranks, ageRange } = filters;
+    const { gender, ranks, ageRange, priceRange } = filters;
     const filtered = lecturers.filter((lecturer) => {
       const genderValid = 
         (!gender.male && !gender.female) ||
         (gender.male && lecturer.lecSex === 'ז') ||
         (gender.female && lecturer.lecSex === 'נ');
 
-        const ranksValid = 
+      const ranksValid = 
         (!ranks.junior && !ranks.mid && !ranks.senior) || 
         (ranks.junior && lecturer.lecStudyLevels.includes('בסיסית')) || 
         (ranks.mid && lecturer.lecStudyLevels.includes('ביניים')) || 
@@ -48,7 +48,13 @@ const LecturersByLanguage = () => {
         (ageRange.from30to50 && lecturer.age >= 30 && lecturer.age <= 50) ||
         (ageRange.over50 && lecturer.age > 50);
 
-      return genderValid && ranksValid && ageValid;
+      const priceValid = 
+        (!priceRange.under100 && !priceRange.from100to150 && !priceRange.over150) ||
+        (priceRange.under100 && lecturer.lecRate < 100) ||
+        (priceRange.from100to150 && lecturer.lecRate >= 100 && lecturer.lecRate <= 150) ||
+        (priceRange.over150 && lecturer.lecRate > 150);
+
+      return genderValid && ranksValid && ageValid && priceValid;
     });
     setFilteredLecturers(filtered);
   };
@@ -96,6 +102,7 @@ const LecturersByLanguage = () => {
 };
 
 export default LecturersByLanguage;
+
 
 
 
