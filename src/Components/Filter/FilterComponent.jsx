@@ -18,6 +18,31 @@ const FilterComponent = ({ onFilter }) => {
     from100to150: false,
     over150: false,
   });
+  const [learningMethods, setLearningMethods] = useState({
+    whatsapp: false,
+    telegram: false,
+    zoom: false,
+    phone: false,
+    frontal: false,
+    other: false,
+  });
+  const [experience, setExperience] = useState({
+    under5: false,
+    from5to10: false,
+    over10: false,
+  });
+  const [educationLevel, setEducationLevel] = useState({
+    undergraduate: false,
+    graduate: false,
+    postGraduate: false,
+    doctoral: false,
+  });
+  
+  const [nativeLanguage, setNativeLanguage] = useState({
+    hebrew: false,
+    english: false,
+    // Add more languages if needed
+  });
 
   const handleCheckboxChange = (category, key) => {
     if (category === 'gender') {
@@ -28,16 +53,24 @@ const FilterComponent = ({ onFilter }) => {
       setAgeRange({ ...ageRange, [key]: !ageRange[key] });
     } else if (category === 'priceRange') {
       setPriceRange({ ...priceRange, [key]: !priceRange[key] });
+    } else if (category === 'learningMethods') {
+      setLearningMethods({ ...learningMethods, [key]: !learningMethods[key] });
+    } else if (category === 'experience') {
+      setExperience({ ...experience, [key]: !experience[key] });
+    } else if (category === 'educationLevel') {
+    setEducationLevel({ ...educationLevel, [key]: !educationLevel[key] });
+    } else if (category === 'nativeLanguage') {
+    setNativeLanguage({ ...nativeLanguage, [key]: !nativeLanguage[key] });
     }
   };
 
   const handleFilterChange = () => {
-    onFilter({ gender, ranks, ageRange, priceRange });
+    onFilter({ gender, ranks, ageRange, priceRange, learningMethods, experience, educationLevel, nativeLanguage  });
   };
 
   return (
     <div className="filter-container">
-      <h3>סינון מרצים</h3>
+      <h2>סינון מרצים</h2>
       <div className="filter-group">
         <label>מין:</label>
         <div>
@@ -146,6 +179,148 @@ const FilterComponent = ({ onFilter }) => {
           </label>
         </div>
       </div>
+        <div className="filter-group">
+        <label>צורת הלמידה:</label>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={learningMethods.whatsapp}
+              onChange={() => handleCheckboxChange('learningMethods', 'whatsapp')}
+            />
+            וואטסאפ
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={learningMethods.telegram}
+              onChange={() => handleCheckboxChange('learningMethods', 'telegram')}
+            />
+            טלגרם
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={learningMethods.zoom}
+              onChange={() => handleCheckboxChange('learningMethods', 'zoom')}
+            />
+            זום
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={learningMethods.phone}
+              onChange={() => handleCheckboxChange('learningMethods', 'phone')}
+            />
+            טלפון
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={learningMethods.frontal}
+              onChange={() => handleCheckboxChange('learningMethods', 'frontal')}
+            />
+            פרונטלי
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={learningMethods.other}
+              onChange={() => handleCheckboxChange('learningMethods', 'other')}
+            />
+            אחרת
+          </label>
+        </div>
+      </div>
+      <div className="filter-group">
+        <label>וותק בהוראה:</label>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={experience.under5}
+              onChange={() => handleCheckboxChange('experience', 'under5')}
+            />
+            מתחת ל-5 שנים
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={experience.from5to10}
+              onChange={() => handleCheckboxChange('experience', 'from5to10')}
+            />
+            בין 5 ל-10 שנים
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={experience.over10}
+              onChange={() => handleCheckboxChange('experience', 'over10')}
+            />
+            מעל 10 שנים
+          </label>
+        </div>
+      </div>
+      <div className="filter-group">
+  <label>רמת השכלה:</label>
+  <div>
+    <label>
+      <input
+        type="checkbox"
+        checked={educationLevel.undergraduate}
+        onChange={() => handleCheckboxChange('educationLevel', 'undergraduate')}
+      />
+      סטודנט של האוניברסיטה
+    </label>
+    <label>
+      <input
+        type="checkbox"
+        checked={educationLevel.graduate}
+        onChange={() => handleCheckboxChange('educationLevel', 'graduate')}
+      />
+      תואר ראשון
+    </label>
+    <label>
+      <input
+        type="checkbox"
+        checked={educationLevel.postGraduate}
+        onChange={() => handleCheckboxChange('educationLevel', 'postGraduate')}
+      />
+      תואר שני
+    </label>
+    <label>
+      <input
+        type="checkbox"
+        checked={educationLevel.doctoral}
+        onChange={() => handleCheckboxChange('educationLevel', 'doctoral')}
+      />
+      דוקטורט
+    </label>
+  </div>
+</div>
+
+<div className="filter-group">
+  <label>שפת האם:</label>
+  <div>
+    <label>
+      <input
+        type="checkbox"
+        checked={nativeLanguage.hebrew}
+        onChange={() => handleCheckboxChange('nativeLanguage', 'hebrew')}
+      />
+      עברית
+    </label>
+    <label>
+      <input
+        type="checkbox"
+        checked={nativeLanguage.english}
+        onChange={() => handleCheckboxChange('nativeLanguage', 'english')}
+      />
+      אנגלית
+    </label>
+    {/* Add more languages if needed */}
+  </div>
+</div>
       <button onClick={handleFilterChange}>סנן</button>
     </div>
   );
