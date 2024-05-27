@@ -8,16 +8,33 @@
     display: flex; /* מפעיל flexbox על הקונטיינר */
     justify-content: center; /* ממריץ את האלמנטים במרכז לכיוון אופק */
     align-items: center; /* ממריץ את האלמנטים במרכז לכיוון אנכי */
+    direction: rtl;
   }
   
   .popup-modal {
+    min-width: 50vw ;
     background-color: white; /* צביעת רקע המודל בלבן */
     padding: 20px; /* הוספת רווחים לתוך המודל */
     border-radius: 8px; /* מעגלים את הפינות של המודל */
+    max-height: 80vh; /* גובה מקסימלי של 80% מגובה המסך */
+    overflow-y: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* מוסיף צל למודל */
   }
   
   .popup-modal h2 {
     margin-top: 0; /* מגדיר את רווח העליון של הכותרת לאפס */
+  }
+
+  .popup-modal::-webkit-scrollbar {
+    width: 12px; /* רוחב הסרגל */
+    border-radius: 8px; /* עיגול של פינות הסרגל */
+  }
+  .popup-modal::-webkit-scrollbar-thumb {
+    background-color: #888888ae; /* צבע המחוון של הסרגל */
+    border-radius: 8px; /* עיגול של פינות המחוון */
+  }
+  
+  .popup-modal::-webkit-scrollbar-thumb:hover {
+    background-color: #b7b464; /* צבע המחוון של הסרגל בעת העצירה מעליו */
   }
   
