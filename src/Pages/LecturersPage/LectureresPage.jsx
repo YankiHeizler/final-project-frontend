@@ -131,8 +131,9 @@ const LecturersByLanguage = () => {
     <div>
       <HeaderComp />
       <div className="main-container">
-        <LecturerList products={filteredLecturers} />
         <FilterComponent onFilter={handleFilter} />
+        <LecturerList products={filteredLecturers} />
+
       </div>
     </div>
   );

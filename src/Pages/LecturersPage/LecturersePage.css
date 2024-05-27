@@ -1,6 +1,6 @@
-.main-container{
+/* .main-container{
   display: flex;
-}
+} */
 
 
 .product-card {
@@ -40,13 +40,14 @@
   }
   
   .product-list {
-    flex: 4;
+    /* flex: 4; */
     display: flex;
     flex-wrap: wrap; 
     justify-content: center; 
     gap: 16px; 
-    /* width: 80%; */
-    float: left;
+    width: 100%;
+    /* float: left; */
+
   }
   
   .error {

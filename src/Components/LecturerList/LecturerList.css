@@ -5,7 +5,7 @@
     padding: 16px; 
     margin: 16px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    background-color: #5c975e;
+    background-color: #648eab;
     overflow: hidden; 
     transition: transform 0.2s; 
     height: 30vh;
@@ -39,7 +39,5 @@
     display: flex;
     flex-wrap: wrap; 
     justify-content: center; 
-    gap: 16px; 
-    /* width: 80%; */
     float: left;
   }

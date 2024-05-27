@@ -9,7 +9,7 @@ const LecturerCard = ({ product }) => {
           <h3>{product.lecFName}</h3>
           <h3>{product.lecLName}</h3>
           <img src={product.lecFoto} alt="photo" />
-          <Link to={`/product/lectors/${product._id}`}>לפרטי המרצה</Link>
+          <button><Link to={`/product/lectors/${product._id}`}>לפרטי המרצה</Link></button>
         </div>
       </div>
     );

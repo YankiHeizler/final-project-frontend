@@ -72,7 +72,6 @@ const FilterComponent = ({ onFilter }) => {
 
   return (
     <div className="filter-container">
-      <h2>סינון מרצים</h2>
       <div className="filter-group">
         <label>מין:</label>
         <div>
@@ -188,22 +187,22 @@ const FilterComponent = ({ onFilter }) => {
             <input
               type="checkbox"
               checked={learningMethods.whatsapp}
-              onChange={() => handleCheckboxChange('learningMethods', 'whatsapp')}
-            />
-            וואטסאפ
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={learningMethods.telegram}
-              onChange={() => handleCheckboxChange('learningMethods', 'telegram')}
-            />
-            טלגרם
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={learningMethods.zoom}
+          //     onChange={() => handleCheckboxChange('learningMethods', 'whatsapp')}
+          //   />
+          //   וואטסאפ
+          // </label>
+          // <label>
+          //   <input
+          //     type="checkbox"
+          //     checked={learningMethods.telegram}
+          //     onChange={() => handleCheckboxChange('learningMethods', 'telegram')}
+          //   />
+          //   טלגרם
+          // </label>
+          // <label>
+          //   <input
+          //     type="checkbox"
+          //     checked={learningMethods.zoom}
               onChange={() => handleCheckboxChange('learningMethods', 'zoom')}
             />
             זום
@@ -263,7 +262,7 @@ const FilterComponent = ({ onFilter }) => {
           </label>
         </div>
       </div>
-      <div className="filter-group">
+      {/* <div className="filter-group">
   <label>רמת השכלה:</label>
   <div>
     <label>
@@ -359,9 +358,9 @@ const FilterComponent = ({ onFilter }) => {
         onChange={() => handleCheckboxChange('nativeLanguage', 'english')}
       />
       אנגלית
-    </label>
-    </div>
-</div>
+    </label> */}
+    {/* </div>
+</div> */}
       <button onClick={handleFilterChange}>סנן</button>
     </div>
   );
