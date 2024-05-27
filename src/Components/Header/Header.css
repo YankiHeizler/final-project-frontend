@@ -1,3 +1,60 @@
-.logo{
-    width: 30%;
-}
+/* Header.css */
+
+/* Container */
+.header-container {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    width: 100%; 
+    padding: 20px;
+    background-color: #2e99c3;
+    
+    
+  }
+  
+
+  .header-container nav {
+    display: flex; 
+    justify-content: space-between; 
+    width: 80%; 
+ 
+  }
+  
+
+  .header-container nav button {
+    background-color: yellow; 
+    padding: 10px 20px;
+    border: 3px solid #ccc; 
+    border-radius: 5px;
+    cursor: pointer; 
+    margin-right: 20px; 
+    transition: background-color 0.3s ease; 
+  }
+  
+  .header-container nav button:last-child {
+    margin-right: 0; 
+  }
+  
+
+  .header-container nav .link {
+    color: #333; 
+    font-size: 18px;
+  }
+  
+ 
+  .header-container .heading {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 5px; 
+    margin-top: 0;
+  }
+  
+  /* Logo */
+  .header-container .logo {
+    width: 150px; 
+    height: 100px; 
+    margin-bottom: 10px; 
+  }
+  
+
