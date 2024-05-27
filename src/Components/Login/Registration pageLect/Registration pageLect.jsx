@@ -9,7 +9,7 @@ const RegistrationPageLect = () => {
   const data = [
     { name: 'lecFName', titel: 'שם פרטי', type: 'text', required: true, default: '' },
     { name: 'lecLName', titel: 'שם משפחה', type: 'text', required: true, default: '' },
-    { name: 'lecTimeTable', titel: 'ימי לימוד', type: 'text', deys: [1, 2, 3, 4, 5], options: ['06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'], required: true, default: [[], [], [], [], []], multiple: true },
+    { name: 'lecTimeTable', titel: 'ימי לימוד', type: 'text', deys: [1, 2, 3, 4, 5], options: ['06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'], required: true, default: {1:[], 2:[],3: [], 4:[], 5:[]}, multiple: true },
     { name: 'lecTZ', titel: 'מספר זהות', type: 'text', required: true, default: '', maxlength: 9, minlength: 5 },
     { name: 'lecSex', titel: 'מגדר', type: 'select', options: ["זכר", "נקבה"], required: true, default: 'זכר', multiple: false },
     { name: 'lecStudyLevels', titel: 'רמת לימוד ', type: 'text', options: ['בסיסית', 'ביניים', 'מתקדמת'], required: true, default: [], multiple: true },
