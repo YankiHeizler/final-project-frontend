@@ -13,7 +13,14 @@ import StudentPersonalAreaPage from './Pages/StudentPersonalAreaPage/StudentPers
 import StudentLoginComp from './Components/Login/StudentLoginConp/StudentLoginComp.jsx'
 import EnrollmentStudent from './Components/Login/EnrollmentStudent/EnrollmentStudent.jsx'
 import TestPage from './Pages/TestPage/TestPage.jsx'
+
 import RegistrationPageLect from './Components/Login/Registration pageLect/Registration pageLect.jsx'
+import Show from './Components/Langugase/Langugase.jsx'
+import LecturersByLanguage from './Pages/LecturersPage/LectureresPage.jsx'
+import LecturerDetails from './Pages/LecturerePage/LecturerePage.jsx'
+import LecturerDetailsPage from './Pages/LecturerePage/LecturerePage.jsx'
+import  AboutPage  from './Components/About/About.jsx'
+
 
 const router = createBrowserRouter([
   {
@@ -25,17 +32,22 @@ const router = createBrowserRouter([
     path: '/test',
     element: <TestPage /> 
   },
-  {
-    path: '/lecturers',
-    element: <LectureresPage /> 
+  {path: '/langugase',
+    element: <Show/>
   },
-  {
-    path: '/lecturer',
-    element: <LecturerePage /> 
+  {path: '/product/:language',
+    element: <LecturersByLanguage /> ,
+    },
+  {path: '/product/lectors/:lecturerId',
+    element: <LecturerDetailsPage />
   },
+  // {path: '/lecturer',
+  //   element: <LecturerePage /> 
+  // },
   {
     path: '/schedule',
     element: <SchedulePage /> 
+    
   },
   {
     path: '/lecturer-personal',
@@ -52,6 +64,11 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <StudentLoginComp /> 
+    
+  },
+  {
+    path: '/About',
+    element: <AboutPage />,
   },
   {
     path: '/student-enrollment',
