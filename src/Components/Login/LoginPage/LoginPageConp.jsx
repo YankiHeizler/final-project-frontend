@@ -52,27 +52,32 @@ function Login({ fields, func, titel }) {
   const updateFormData = (event) => {
     const { name, value, checked } = event.target
     // console.log(event);
-    // console.log(key);
     // console.log(`name:${name}`);
     // console.log(value);
     // console.log(checked);
     // console.log('xxxxxxxxxxxxxxxxxx');
     const newData = { ...data };
+    // console.log(newData);
+    const theDay = newData.lecTimeTable.find((day) => day.day == name);
     // console.log(newData.lecTimeTable);
     // const [selectedOptions, setSelectedOptions] = useState([]);
     
     // if(!newData.lecTimeTable.name){
     //   newData.lecTimeTable[name] = []
     // }
+    if (! theDay) {
+      console.error(`Day ${name} not found`);
+      return;
+    }
     if (checked) {
-      newData.lecTimeTable[name].push(value);
+      theDay.workinghours.push(value);
     }
     else {
-      newData.lecTimeTable[name] = newData.lecTimeTable[name].filter((opt) => opt !== value);
+      theDay.workinghours = theDay.workinghours.filter((opt) => opt !== value);
     }
     setData(newData);
-    console.log(newData.lecTimeTable);
-    console.log(newData);
+    console.log(data);
+    // console.log(newData.lecTimeTable);
 
 
   }
@@ -80,12 +85,12 @@ function Login({ fields, func, titel }) {
   const Submit = async (e) => {
     e.preventDefault()
     try {
-      console.log(data);
+      // console.log(data);
       await func(data)
     } catch (error) {
       setError(error.message)
     }
-    // e.target.reset()
+    e.target.reset()
   }
   return (
     <>
