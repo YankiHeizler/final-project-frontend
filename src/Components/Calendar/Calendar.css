@@ -1,0 +1,28 @@
+/* src/Calendar.css */
+
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.calendar-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+}
+
+.calendar-table th,
+.calendar-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.calendar-table th {
+  background-color: #f2f2f2;
+}
+
+.calendar-table td div {
+  margin: 5px 0;
+}

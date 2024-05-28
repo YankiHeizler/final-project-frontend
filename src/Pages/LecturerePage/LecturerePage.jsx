@@ -2,7 +2,11 @@ import React from 'react'
 
 const LecturerePage = () => {
   return (
-    <div>LecturerePage</div>
+    <div>LecturerePageeee
+       <button  >calendar</button>
+    </div>
+   
+
   )
 }
 

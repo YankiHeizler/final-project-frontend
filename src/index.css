@@ -1,0 +1,23 @@
+#select-lang{
+margin: 10px 0;
+}
+
+.langs{
+    display: flex;
+    gap: 10px;
+}
+
+.lang{
+    cursor: pointer;
+    padding: 5px 15px;
+    background-color: rgb(110, 110, 229);
+}
+
+.lang.selected{
+    background-color: rgb(33, 33, 71);
+    color:white;
+}
+
+.lang-selector{
+    margin-top: 10px;
+}

@@ -13,7 +13,7 @@ import StudentCoursPage from './StudentCoursPage/StudentCoursPage.jsx'
 import StudentLoginComp from './Components/Login/StudentLoginConp/StudentLoginComp.jsx'
 import EnrollmentStudent from './Components/Login/EnrollmentStudent/EnrollmentStudent.jsx'
 import TestPage from './Pages/TestPage/TestPage.jsx'
-
+import Scheduler from './Pages/Scheduler/Scheduler.jsx'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -56,7 +56,10 @@ const router = createBrowserRouter([
     path: '/student-enrollment',
     element: <EnrollmentStudent /> 
   },
+  { path: '/scheduler',
+  element: <Scheduler/> 
 
+  },
   
 ])
 
