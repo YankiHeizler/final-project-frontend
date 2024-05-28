@@ -13,9 +13,9 @@ import StudentPersonalAreaPage from './Pages/StudentPersonalAreaPage/StudentPers
 import StudentLoginComp from './Components/Login/StudentLoginConp/StudentLoginComp.jsx'
 import EnrollmentStudent from './Components/Login/EnrollmentStudent/EnrollmentStudent.jsx'
 import TestPage from './Pages/TestPage/TestPage.jsx'
-<<<<<<< HEAD
+
 import Scheduler from './Pages/Scheduler/Scheduler.jsx'
-=======
+
 
 import RegistrationPageLect from './Components/Login/Registration pageLect/Registration pageLect.jsx'
 import Show from './Components/Langugase/Langugase.jsx'
@@ -25,7 +25,7 @@ import LecturerDetailsPage from './Pages/LecturerePage/LecturerePage.jsx'
 import  AboutPage  from './Components/About/About.jsx'
 
 
->>>>>>> 62495eaf098bdef8cdac919a35105d662840ce52
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -78,17 +78,17 @@ const router = createBrowserRouter([
     path: '/student-enrollment',
     element: <EnrollmentStudent /> 
   },
-<<<<<<< HEAD
+
   { path: '/scheduler',
   element: <Scheduler/> 
-=======
+  },
   {
     path: '/lecturer-enrollment',
     element: <RegistrationPageLect /> 
   },
->>>>>>> 62495eaf098bdef8cdac919a35105d662840ce52
 
-  },
+
+
   
 ])
 

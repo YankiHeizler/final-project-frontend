@@ -1,5 +1,5 @@
 
-<<<<<<< HEAD
+
 const LecturerePage = () => {
   return (
     <div>LecturerePageeee
@@ -9,8 +9,7 @@ const LecturerePage = () => {
 
   )
 }
-=======
->>>>>>> 62495eaf098bdef8cdac919a35105d662840ce52
+
 
 import React, { useState, useEffect, } from 'react';
 import { useParams, Link } from 'react-router-dom';
