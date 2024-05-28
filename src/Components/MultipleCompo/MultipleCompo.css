@@ -1,0 +1,6 @@
+.ex1 {
+    background-color: rgba(93, 105, 108, 0.377);
+    max-height: 60px;
+    max-width: 150px;
+    overflow-y: scroll;
+  }

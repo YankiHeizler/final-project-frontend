@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 
+=======
+/* Header.css */
+
+/* Container */
+>>>>>>> 62495eaf098bdef8cdac919a35105d662840ce52
 .header-container {
     display: flex; 
     flex-direction: column; 
@@ -53,4 +59,10 @@
     width: 150px; 
     height: 100px; 
     margin-bottom: 10px; 
+<<<<<<< HEAD
   }
+=======
+  }
+  
+
+>>>>>>> 62495eaf098bdef8cdac919a35105d662840ce52

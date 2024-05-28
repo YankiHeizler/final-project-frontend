@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import HeaderComp from '../../Components/Header/HeaderComp'
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
+=======
+import Show from '../../Components/Langugase/Langugase'
+>>>>>>> 62495eaf098bdef8cdac919a35105d662840ce52
 
 
 const HomePage = () => {
@@ -27,6 +31,7 @@ const navigation = useNavigate();
 
   return (
     <>
+<<<<<<< HEAD
       <HeaderComp />
       <div id="select-lang">
         <div className="langs">
@@ -41,6 +46,11 @@ const navigation = useNavigate();
 
         {language !== '' && <button className="lang-selector" onClick={handleClick}>Select</button>}
       </div>
+=======
+    <HeaderComp/>
+    <Show/>
+
+>>>>>>> 62495eaf098bdef8cdac919a35105d662840ce52
     </>
 
   )

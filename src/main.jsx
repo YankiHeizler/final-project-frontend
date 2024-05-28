@@ -9,11 +9,23 @@ import LecturerePage from './Pages/LecturerePage/LecturerePage.jsx'
 import SchedulePage from './Pages/SchedulePage/SchedulePage.jsx'
 import LecturerPersonalAreaPage from './Pages/LecturerPersonalAreaPage/LecturerPersonalAreaPage.jsx'
 import StudentPersonalAreaPage from './Pages/StudentPersonalAreaPage/StudentPersonalAreaPage.jsx'
-import StudentCoursPage from './StudentCoursPage/StudentCoursPage.jsx'
+// import StudentCoursPage from './StudentCoursPage/StudentCoursPage.jsx'
 import StudentLoginComp from './Components/Login/StudentLoginConp/StudentLoginComp.jsx'
 import EnrollmentStudent from './Components/Login/EnrollmentStudent/EnrollmentStudent.jsx'
 import TestPage from './Pages/TestPage/TestPage.jsx'
+<<<<<<< HEAD
 import Scheduler from './Pages/Scheduler/Scheduler.jsx'
+=======
+
+import RegistrationPageLect from './Components/Login/Registration pageLect/Registration pageLect.jsx'
+import Show from './Components/Langugase/Langugase.jsx'
+import LecturersByLanguage from './Pages/LecturersPage/LectureresPage.jsx'
+import LecturerDetails from './Pages/LecturerePage/LecturerePage.jsx'
+import LecturerDetailsPage from './Pages/LecturerePage/LecturerePage.jsx'
+import  AboutPage  from './Components/About/About.jsx'
+
+
+>>>>>>> 62495eaf098bdef8cdac919a35105d662840ce52
 const router = createBrowserRouter([
   {
     path: '/',
@@ -24,17 +36,22 @@ const router = createBrowserRouter([
     path: '/test',
     element: <TestPage /> 
   },
-  {
-    path: '/lecturers',
-    element: <LectureresPage /> 
+  {path: '/langugase',
+    element: <Show/>
   },
-  {
-    path: '/lecturer',
-    element: <LecturerePage /> 
+  {path: '/product/:language',
+    element: <LecturersByLanguage /> ,
+    },
+  {path: '/product/lectors/:lecturerId',
+    element: <LecturerDetailsPage />
   },
+  // {path: '/lecturer',
+  //   element: <LecturerePage /> 
+  // },
   {
     path: '/schedule',
     element: <SchedulePage /> 
+    
   },
   {
     path: '/lecturer-personal',
@@ -44,20 +61,32 @@ const router = createBrowserRouter([
     path: '/student-personal',
     element: <StudentPersonalAreaPage /> 
   },
-  {
-    path: '/student-cours',
-    element: <StudentCoursPage /> 
-  },
+  // {
+  //   path: '/student-cours',
+  //   element: <StudentCoursPage /> 
+  // },
   {
     path: '/login',
     element: <StudentLoginComp /> 
+    
+  },
+  {
+    path: '/About',
+    element: <AboutPage />,
   },
   {
     path: '/student-enrollment',
     element: <EnrollmentStudent /> 
   },
+<<<<<<< HEAD
   { path: '/scheduler',
   element: <Scheduler/> 
+=======
+  {
+    path: '/lecturer-enrollment',
+    element: <RegistrationPageLect /> 
+  },
+>>>>>>> 62495eaf098bdef8cdac919a35105d662840ce52
 
   },
   
