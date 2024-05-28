@@ -26,9 +26,10 @@ const EnrollmentStudent = () => {
             navigate(-1);
           }
         };
-        const login = async ({ data }) => {
+        const login = async ( data ) => {
           const url = CREATSTUDENTURL
-          const userDetails =data
+          const userDetails = data
+          console.log(userDetails);
             const res = await axios.post(url, {userDetails} )
             console.log(res.data);
         }
