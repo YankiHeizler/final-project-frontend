@@ -11,7 +11,9 @@ function Login({ fields, func, titel }) {
     })
     return keys
   }
-
+  const saveToken = (token) => {
+    localStorage.setItem('fToken', token);
+  };
   const [data, setData] = useState(tetKeys(fields));
   const [error, setError] = useState('')
 
@@ -86,7 +88,12 @@ function Login({ fields, func, titel }) {
     e.preventDefault()
     try {
       // console.log(data);
-      await func(data)
+     const res = await func(data)
+      saveToken(res.data.token);
+      // console.log(getToken());
+      console.log(res.data);
+      setError('')
+
     } catch (error) {
       setError(error.message)
     }
