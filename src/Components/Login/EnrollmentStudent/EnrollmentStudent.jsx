@@ -18,10 +18,9 @@ const EnrollmentStudent = () => {
       
       ]
         
-        const [isOpen, setIsOpen] = useState(true);
+      
         const navigate = useNavigate();        
         const togglePopup = () => {
-          setIsOpen(!isOpen);
           {
             navigate(-1);
           }
@@ -35,7 +34,7 @@ const EnrollmentStudent = () => {
         }
   return (
     <>
-    <Popup open={isOpen} closeFn={togglePopup}>
+    <Popup open={true} closeFn={togglePopup}>
         <Login fields={data} titel={'הרשמה לסטודנט'} func={login}/>
         <Link to={'/lecturer-enrollment'} > יצירת מרצה חדש </Link>
 

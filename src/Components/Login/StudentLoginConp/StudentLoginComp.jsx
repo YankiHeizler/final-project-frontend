@@ -18,7 +18,7 @@ const StudentLoginComp = () => {
   const togglePopup = () => {
     // setIsOpen(!isOpen);
     {
-      <navigate to={-1}/>;
+      navigate(-1);
     }
   };
   const saveToken = (token) => {
@@ -71,7 +71,7 @@ const StudentLoginComp = () => {
 
   return (
     <>
-      <button onClick={togglePopup}>LOGIN</button>
+      {/* <button onClick={togglePopup}>LOGIN</button> */}
       <Popup open={true} closeFn={togglePopup}>
         <Login fields={data} func={login} titel={'כניסה'} />
         <div>

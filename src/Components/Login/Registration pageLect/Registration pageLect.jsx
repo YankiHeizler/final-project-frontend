@@ -27,10 +27,9 @@ const RegistrationPageLect = () => {
 
   ]
 
-  const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
   const togglePopup = () => {
-    setIsOpen(!isOpen);
+    // setIsOpen(!isOpen);
     {
       navigate(-1);
     }
@@ -43,7 +42,7 @@ const RegistrationPageLect = () => {
   }
   return (
     <>
-      <Popup open={isOpen} closeFn={togglePopup}>
+      <Popup open={true} closeFn={togglePopup}>
         <Login fields={data} titel={'הרשמה למרצה'} func={login} />
       </Popup>
     </>
