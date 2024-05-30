@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './FilterComponent.css';
 
 const FilterComponent = ({ onFilter }) => {
@@ -37,7 +37,7 @@ const FilterComponent = ({ onFilter }) => {
     postGraduate: false,
     doctoral: false,
   });
-  
+
   const [nativeLanguage, setNativeLanguage] = useState({
     hebrew: false,
 
@@ -60,14 +60,14 @@ const FilterComponent = ({ onFilter }) => {
     } else if (category === 'experience') {
       setExperience({ ...experience, [key]: !experience[key] });
     } else if (category === 'educationLevel') {
-    setEducationLevel({ ...educationLevel, [key]: !educationLevel[key] });
+      setEducationLevel({ ...educationLevel, [key]: !educationLevel[key] });
     } else if (category === 'nativeLanguage') {
-    setNativeLanguage({ ...nativeLanguage, [key]: !nativeLanguage[key] });
+      setNativeLanguage({ ...nativeLanguage, [key]: !nativeLanguage[key] });
     }
   };
 
   const handleFilterChange = () => {
-    onFilter({ gender, ranks, ageRange, priceRange, learningMethods, experience, educationLevel, nativeLanguage  });
+    onFilter({ gender, ranks, ageRange, priceRange, learningMethods, experience, educationLevel, nativeLanguage });
   };
 
   return (
@@ -180,7 +180,7 @@ const FilterComponent = ({ onFilter }) => {
           </label>
         </div>
       </div>
-        <div className="filter-group">
+      <div className="filter-group">
         <label>צורת הלמידה:</label>
         <div>
           <label>

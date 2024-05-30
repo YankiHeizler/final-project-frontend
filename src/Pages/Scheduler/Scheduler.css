@@ -1,0 +1,41 @@
+/* src/Calendar.css */
+
+.main-content {
+  display: flex;
+}
+
+.calendar-container {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lecturers-list {
+  flex: 1;
+  padding: 20px;
+  border-left: 1px solid #ddd;
+}
+
+.lecturers-list h2 {
+  margin-bottom: 10px;
+}
+
+.lecturers-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.lecturers-list li {
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s;
+}
+
+.lecturers-list li:hover {
+  background-color: #e9e9e9;
+}

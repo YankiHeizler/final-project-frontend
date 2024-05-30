@@ -14,10 +14,11 @@ const StudentLoginComp = () => {
 
   // const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
+  
   const togglePopup = () => {
     // setIsOpen(!isOpen);
     {
-      navigate(-1);
+      <navigate to={-1}/>;
     }
   };
   const saveToken = (token) => {
@@ -60,6 +61,7 @@ const StudentLoginComp = () => {
       const studEmail = Email;
       userDetails = { studPass, studEmail };
     }
+
 
     // console.log(userDetails );
     const res = await axios.post(url, { userDetails }, { withCredentials: true })
