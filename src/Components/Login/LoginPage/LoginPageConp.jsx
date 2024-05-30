@@ -87,11 +87,8 @@ function Login({ fields, func, titel }) {
   const Submit = async (e) => {
     e.preventDefault()
     try {
-      // console.log(data);
      const res = await func(data)
       saveToken(res.data.token);
-      // console.log(getToken());
-      console.log(res.data);
       setError('')
 
     } catch (error) {
