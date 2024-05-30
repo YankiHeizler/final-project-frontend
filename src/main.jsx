@@ -13,16 +13,14 @@ import StudentPersonalAreaPage from './Pages/StudentPersonalAreaPage/StudentPers
 import StudentLoginComp from './Components/Login/StudentLoginConp/StudentLoginComp.jsx'
 import EnrollmentStudent from './Components/Login/EnrollmentStudent/EnrollmentStudent.jsx'
 import TestPage from './Pages/TestPage/TestPage.jsx'
-
 import Scheduler from './Pages/Scheduler/Scheduler.jsx'
-
-
 import RegistrationPageLect from './Components/Login/Registration pageLect/Registration pageLect.jsx'
 import Show from './Components/Langugase/Langugase.jsx'
 import LecturersByLanguage from './Pages/LecturersPage/LectureresPage.jsx'
 import LecturerDetails from './Pages/LecturerePage/LecturerePage.jsx'
 import LecturerDetailsPage from './Pages/LecturerePage/LecturerePage.jsx'
 import  AboutPage  from './Components/About/About.jsx'
+import PersonalStudentPage from './Pages/PersonalStudentPage/PersonalStudentPage.jsx'
 
 
 
@@ -61,10 +59,10 @@ const router = createBrowserRouter([
     path: '/student-personal',
     element: <StudentPersonalAreaPage /> 
   },
-  // {
-  //   path: '/student-cours',
-  //   element: <StudentCoursPage /> 
-  // },
+  {
+    path: '/studentarea',
+    element: <PersonalStudentPage /> 
+  },
   {
     path: '/login',
     element: <StudentLoginComp /> 

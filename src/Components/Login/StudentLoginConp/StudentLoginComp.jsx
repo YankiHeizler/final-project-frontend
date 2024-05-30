@@ -3,27 +3,32 @@ import Popup from '../../PopupComp/PopupComp'
 import Login from '../LoginPage/LoginPageConp'
 import { useState } from 'react'
 import axios from "axios";
-import { Link ,useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LOGINLECTURERURL, LOGINSTUDENTURL } from '../../../URLS.js'
 const StudentLoginComp = () => {
   const data = [
-    { name: 'Email', titel: 'מייל', type: 'txte', required: true ,default:'' },
-    { name: 'Pass', titel: 'סיסמה', type: 'txte', required: true ,default:''},
-    { name: 'isLecturerurl', titel: 'כניסה למרצה', type: 'checkbox' ,default: false}
+    { name: 'Email', titel: 'מייל', type: 'txte', required: true, default: '' },
+    { name: 'Pass', titel: 'סיסמה', type: 'txte', required: true, default: '' },
+    { name: 'isLecturerurl', titel: 'כניסה למרצה', type: 'checkbox', default: false }
   ]
-  const saveToken = (token)=>{
-    localStorage.setItem('Token', token)
-  };
-  const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate
+
+  // const [isOpen, setIsOpen] = useState(true);
+  const navigate = useNavigate();
+  
   const togglePopup = () => {
-    setIsOpen(!isOpen);
+    // setIsOpen(!isOpen);
     {
       <navigate to={-1}/>;
     }
   };
-  
-  
+  const saveToken = (token) => {
+    localStorage.setItem('fToken', token);
+  };
+  const getToken = () => {
+    return localStorage.getItem('fToken');
+  };
+
+
   //   const getUser = async (pro) =>{
   //     document.addEventListener("DOMContentLoaded", function(event){
   //       const checkbox = document.querySelector('input[type="checkbox"]');
@@ -43,37 +48,36 @@ const StudentLoginComp = () => {
     // console.log(data);
 
     const { Pass, Email, isLecturerurl } = data;
-const url = isLecturerurl ? LOGINLECTURERURL : LOGINSTUDENTURL;
-console.log(url);
+    const url = isLecturerurl ? LOGINLECTURERURL : LOGINSTUDENTURL;
+    console.log(url);
 
-let userDetails;
-if (isLecturerurl) {
-  const lecPass = Pass;
-  const lecEmail = Email;
-  userDetails = { lecPass, lecEmail };
-} else {
-  const studPass = Pass;
-  const studEmail = Email;
-  userDetails = { studPass, studEmail };
-}
+    let userDetails;
+    if (isLecturerurl) {
+      const lecPass = Pass;
+      const lecEmail = Email;
+      userDetails = { lecPass, lecEmail };
+    } else {
+      const studPass = Pass;
+      const studEmail = Email;
+      userDetails = { studPass, studEmail };
+    }
 
-console.log(userDetails );
-      const res = await axios.post(url, { userDetails },{withCredentials:true})
-      console.log(res.data);
-      saveToken(res.data.token)
 
-      // return response.data;
+    // console.log(userDetails );
+    const res = await axios.post(url, { userDetails }, { withCredentials: true })
+    return (res)
+    console.log(res.data);
   }
 
   return (
     <>
       <button onClick={togglePopup}>LOGIN</button>
-      <Popup open={isOpen} closeFn={togglePopup}>
-        <Login fields={data} func={login} titel={'כניסה'}/>
+      <Popup open={true} closeFn={togglePopup}>
+        <Login fields={data} func={login} titel={'כניסה'} />
         <div>
-        <Link to={'/student-enrollment'} > יצירת סטודנט חדש </Link>
-        <br/>
-        <Link to={'/lecturer-enrollment'} > יצירת מרצה חדש </Link>
+          <Link to={'/student-enrollment'} > יצירת סטודנט חדש </Link>
+          <br />
+          <Link to={'/lecturer-enrollment'} > יצירת מרצה חדש </Link>
         </div>
       </Popup>
     </>

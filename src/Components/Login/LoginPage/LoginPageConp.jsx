@@ -88,11 +88,13 @@ function Login({ fields, func, titel }) {
     e.preventDefault()
     try {
       // console.log(data);
-      await func(data)
-      saveToken(res.data.token)
-      console.log(res.data.token)
-    }
-     catch (error) {
+     const res = await func(data)
+      saveToken(res.data.token);
+      // console.log(getToken());
+      console.log(res.data);
+      setError('')
+
+    } catch (error) {
       setError(error.message)
     }
     e.target.reset()

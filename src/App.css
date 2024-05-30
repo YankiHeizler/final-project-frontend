@@ -1,3 +1,20 @@
-#week {
-    display: flex;
-}
+
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }

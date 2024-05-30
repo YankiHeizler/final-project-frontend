@@ -58,9 +58,11 @@ const LecturerDetailsPage = () => {
         <img src="{product.lecFoto}" alt="photo" />
           <h3>{lecturer.lecFName}</h3>
           <h3>{lecturer.lecLName}</h3>
-          <h3>{lecturer._id}</h3>
+          <h3>{lecturer.lecSex}</h3>
           <h3>השכלה: {lecturer.lecEduc}</h3>
           <h3>שפת אם: {lecturer.lecMotherLang}</h3>
+          <h3>תעריף: {lecturer.lecRate} ש"ח</h3>
+          
 
           <button><Link to={'/login'} className='link'>לקביעת שיעור עם המרצה</Link></button>
 

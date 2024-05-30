@@ -179,6 +179,7 @@ import axios from 'axios';
 import HeaderComp from '../../Components/Header/HeaderComp';
 import FilterComponent from '../../Components/Filter/FilterComponent';
 import './LecturersePage.css';
+import LecturerList from '../../Components/LecturerList/LecturerList';
 
 const LecturersByLanguage = () => {
   const { language } = useParams();
@@ -271,14 +272,19 @@ const LecturersByLanguage = () => {
 
       const educationLevelValid =
         (!educationLevel.undergraduate && !educationLevel.graduate && !educationLevel.postGraduate && !educationLevel.doctoral) ||
+        (educationLevel.undergraduate && lecturer.lecEduc.includes('קורסים')) ||
         (educationLevel.undergraduate && lecturer.lecEduc.includes('סטודנט של האוניברסיטה')) ||
         (educationLevel.graduate && lecturer.lecEduc.includes('תואר ראשון') )||
         (educationLevel.postGraduate && lecturer.lecEduc.includes('תואר שני')) ||
         (educationLevel.doctoral && lecturer.lecEduc.includes('דוקטורט'));
 
       const nativeLanguageValid =
-        (!nativeLanguage.hebrew && !nativeLanguage.english) ||
+        (!nativeLanguage.hebrew && !nativeLanguage.english && !nativeLanguage.russian && !nativeLanguage.somali && !nativeLanguage.swedish && !nativeLanguage.chinese) ||
         (nativeLanguage.hebrew && lecturer.lecMotherLang === 'עברית') ||
+        (nativeLanguage.russian && lecturer.lecMotherLang === 'רוסית') ||
+        (nativeLanguage.somali && lecturer.lecMotherLang === 'סומלית') ||
+        (nativeLanguage.swedish && lecturer.lecMotherLang === 'שוודית') ||
+        (nativeLanguage.chinese && lecturer.lecMotherLang === 'סינית') ||
         (nativeLanguage.english && lecturer.lecMotherLang === 'אנגלית');
   
       return genderValid && ranksValid && ageValid && priceValid && learningMethodsValid && experienceValid && educationLevelValid && nativeLanguageValid;
@@ -294,34 +300,12 @@ const LecturersByLanguage = () => {
     return <div>Loading...</div>;
   }
 
-  const LecturerCard = ({ product }) => {
-    return (
-      <div className="product-card" key={product._id}>
-        <div className="product-details">
-          <h3>{product.lecFName} {product.lecLName}</h3>
-          <img src={product.lecFoto} alt={`${product.lecFName} ${product.lecLName}`} />
-          <Link to={`/product/lectors/${product._id}`}>לפרטי המרצה</Link>
-        </div>
-      </div>
-    );
-  };
-
-  const ProductList = ({ products }) => {
-    return (
-      <div className="product-list">
-        {products.map((product) => (
-          <LecturerCard key={product._id} product={product} />
-        ))}
-      </div>
-    );
-  };
-
   return (
     <div>
       <HeaderComp />
       <div className="main-container">
         <FilterComponent onFilter={handleFilter} />
-        <ProductList products={filteredLecturers} />
+        <LecturerList products={filteredLecturers} />
       </div>
     </div>
   );
