@@ -35,7 +35,7 @@ const HomePage = () => {
       <Show />
 
 
-      {/* <HeaderComp /> */}
+      {/* <HeaderComp />
       <div id="select-lang">
         <div className="langs">
 
@@ -48,7 +48,7 @@ const HomePage = () => {
         </div>
 
         {language !== '' && <button className="lang-selector" onClick={handleClick}>Select</button>}
-      </div>
+      </div> */}
 
 
     </>
