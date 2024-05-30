@@ -19,6 +19,7 @@ import LecturersByLanguage from './Pages/LecturersPage/LectureresPage.jsx'
 import LecturerDetails from './Pages/LecturerePage/LecturerePage.jsx'
 import LecturerDetailsPage from './Pages/LecturerePage/LecturerePage.jsx'
 import  AboutPage  from './Components/About/About.jsx'
+import PersonalStudentPage from './Pages/PersonalStudentPage/PersonalStudentPage.jsx'
 
 
 const router = createBrowserRouter([
@@ -56,10 +57,10 @@ const router = createBrowserRouter([
     path: '/student-personal',
     element: <StudentPersonalAreaPage /> 
   },
-  // {
-  //   path: '/student-cours',
-  //   element: <StudentCoursPage /> 
-  // },
+  {
+    path: '/studentarea',
+    element: <PersonalStudentPage /> 
+  },
   {
     path: '/login',
     element: <StudentLoginComp /> 
