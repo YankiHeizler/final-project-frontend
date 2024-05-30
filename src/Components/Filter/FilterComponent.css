@@ -1,54 +1,55 @@
 
-.filter-container {
-    width: 20%;
-    margin: 20px;
-    padding: 20px;
-    background-color: #f1f1f1;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    direction: rtl;
-    float: right;
-    flex: 1;
-  }
+
+   .filter-container {
+  width: 100%;
+  margin: 20px 0;
+  padding-top: 20px;
+  background-color: #f1f1f1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  direction: rtl;
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid black;
+  border-radius: 4px;
+
   
-  .filter-container h3 {
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .filter-group {
-    margin-bottom: 20px;
-  }
-  
-  .filter-group label {
-    display: block;
-    margin-bottom: 10px;
-    color: #555;
-    font-weight: bold;
-  }
-  
-  .filter-group div {
-    margin-left: 10px;
-  }
-  
-  .filter-group input[type="checkbox"] {
-    margin-right: 10px;
-  }
-  
-  button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 150px;
+  padding-right: 20px;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: #555;
+  font-weight: bold;
+}
+
+.filter-group div {
+  margin-left: 10px;
+}
+
+.filter-group input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
   
