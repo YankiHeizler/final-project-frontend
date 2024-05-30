@@ -26,3 +26,28 @@
 .calendar-table td div {
   margin: 5px 0;
 }
+
+
+
+ 
+.text-box {
+    width: 100px; /* הגדרת רוחב המשבצת */
+    white-space: nowrap; /* מונע שבירת שורות */
+    overflow: hidden; /* חותך תוכן שיוצא מחוץ לגבולות המשבצת */
+    text-overflow: ellipsis; /* מציג "..." במקום הטקסט הנחתך */
+    border: 1px solid #000; /* מסגרת למשבצת */
+    padding: 10px; /* ריווח פנימי למשבצת */
+}
+.text-box:hover {
+  overflow: visible; /* מציג את כל הטקסט */
+  white-space: normal; /* מאפשר שבירת שורות */
+  background: #f0f0f0; /* רקע שונה על מנת להבדיל את הטקסט המלא */
+  position: absolute; /* מיקם את המשבצת מעל כל תוכן אחר */
+  z-index: 1; /* הבטחת שהמשבצת תהיה מעל כל תוכן אחר */
+}
+.x{
+  border: 1px solid #000; 
+}
+.y{
+  background-color : #f8b3b3f8;
+}

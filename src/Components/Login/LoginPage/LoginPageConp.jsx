@@ -11,7 +11,9 @@ function Login({ fields, func, titel }) {
     })
     return keys
   }
-
+  const saveToken = (token)=>{
+    localStorage.setItem('Token', token)
+  };
   const [data, setData] = useState(tetKeys(fields));
   const [error, setError] = useState('')
 
@@ -87,11 +89,15 @@ function Login({ fields, func, titel }) {
     try {
       // console.log(data);
       await func(data)
-    } catch (error) {
+      saveToken(res.data.token)
+      console.log(res.data.token)
+    }
+     catch (error) {
       setError(error.message)
     }
     e.target.reset()
   }
+  
   return (
     <>
       <div className="login-modal">

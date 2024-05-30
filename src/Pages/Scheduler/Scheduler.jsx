@@ -1,6 +1,6 @@
 import Calendar from "../../Components/Calendar/Calendar.jsx";
 // import { /*studentScheduleActive,*/ lecturerSchedule } from "./Scheduler.helper.js";
-import { getStudentData } from "./Scheduler.helper.js";
+import { getStudentData } from "./Scheduler.helper.jsx";
 import { useEffect, useState } from "react";
 import HeaderComp from '../../Components/Header/HeaderComp.jsx'
 import "./Scheduler.css";
@@ -15,11 +15,14 @@ const lecturers = []
 //   // Add more lecturers if needed 
 // ];
 
-function Scheduler() {
+function Schedulerr() {
   const [currentSchedule, setCurrentSchedule] = useState({});
 
-  const fetchData = async () => {
-    setCurrentSchedule(await getStudentData())
+  const fetchStudentData = async () => {
+   const data = await getStudentData()
+   console.log(data);
+   setCurrentSchedule(data)
+    // setCurrentSchedule()
   }
 
   useEffect(() => {
@@ -34,7 +37,7 @@ function Scheduler() {
     <div className="App">
       <HeaderComp />
       <div className="main-content">
-        {/* <Calendar schedule={currentSchedule} /> */}
+        <Calendar schedule={currentSchedule} />
         <div className="lecturers-list">
 
           <h2>Lecturers</h2>
@@ -45,13 +48,13 @@ function Scheduler() {
                 onClick={() => handleLecturerClick(lecturer.schedule)}
               >
                 {lecturer.name}
-              </li>
+               </li>
             ))}
           </ul>
         </div>
       </div>
     </div>
-  );
-}
+  );  
+ }
 
-export default Scheduler;
+export default Schedulerr;

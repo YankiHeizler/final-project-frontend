@@ -11,13 +11,15 @@ const StudentLoginComp = () => {
     { name: 'Pass', titel: 'סיסמה', type: 'txte', required: true ,default:''},
     { name: 'isLecturerurl', titel: 'כניסה למרצה', type: 'checkbox' ,default: false}
   ]
-
+  const saveToken = (token)=>{
+    localStorage.setItem('Token', token)
+  };
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate
   const togglePopup = () => {
     setIsOpen(!isOpen);
     {
-      navigate(-1);
+      <navigate to={-1}/>;
     }
   };
   
@@ -56,8 +58,10 @@ if (isLecturerurl) {
 }
 
 console.log(userDetails );
-      const res = await axios.post(url, { userDetails })
+      const res = await axios.post(url, { userDetails },{withCredentials:true})
       console.log(res.data);
+      saveToken(res.data.token)
+
       // return response.data;
   }
 

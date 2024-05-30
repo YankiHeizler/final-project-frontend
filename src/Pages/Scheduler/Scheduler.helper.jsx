@@ -1,4 +1,4 @@
-import axios from "axios";
+
 // מה שהתלמיד מקבל ללא קונקשן
 // export const studentScheduleActive = {
 //   dates: ["1.1.24", "2.1.24", "3.1.24", "4.1.24", "5.1.2024"],
@@ -66,20 +66,27 @@ import axios from "axios";
 //   ]
 // };
 
-export async function  getStudentData() {
+//  export async function  getStudentData() {
   // return await fetch('http://localhost:3008/api/studentTimeTable',{
   //   method:'GET'
   // } )
   //   .then(response => response.json())
   //   .then(json => json)
   //   .catch(error => console.error(error));
+  // const xtoken = localStorage.getItem('Token')
+  import axios from "axios";
+  export async function  getStudentData() {
   try {
     const res = await axios.get('http://localhost:3008/api/studentTimeTable',{withCredentials:true});
+    // const res = await axios.get('http://localhost:3008/api/studentTimeTable',{headers:{'cookie':`${xtoken}`}});
+    // const res = await axios.get('http://localhost:3008/api/studentTimeTable');
+
     return res.data
   } catch (error) {
     console.error(error)
   }
 }
+
     // כשקיים שיעור מתןך קונקשן מסוים 
 // export const lecturerSchedule = {
 //     dates: ['1.1.24', '2.1.24', '3.1.24', '4.1.24', '5.1.24'],

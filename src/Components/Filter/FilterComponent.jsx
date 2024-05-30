@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './FilterComponent.css';
 
 const FilterComponent = ({ onFilter }) => {
@@ -37,7 +37,7 @@ const FilterComponent = ({ onFilter }) => {
     postGraduate: false,
     doctoral: false,
   });
-  
+
   const [nativeLanguage, setNativeLanguage] = useState({
     hebrew: false,
     english: false,
@@ -58,14 +58,14 @@ const FilterComponent = ({ onFilter }) => {
     } else if (category === 'experience') {
       setExperience({ ...experience, [key]: !experience[key] });
     } else if (category === 'educationLevel') {
-    setEducationLevel({ ...educationLevel, [key]: !educationLevel[key] });
+      setEducationLevel({ ...educationLevel, [key]: !educationLevel[key] });
     } else if (category === 'nativeLanguage') {
-    setNativeLanguage({ ...nativeLanguage, [key]: !nativeLanguage[key] });
+      setNativeLanguage({ ...nativeLanguage, [key]: !nativeLanguage[key] });
     }
   };
 
   const handleFilterChange = () => {
-    onFilter({ gender, ranks, ageRange, priceRange, learningMethods, experience, educationLevel, nativeLanguage  });
+    onFilter({ gender, ranks, ageRange, priceRange, learningMethods, experience, educationLevel, nativeLanguage });
   };
 
   return (
@@ -179,7 +179,7 @@ const FilterComponent = ({ onFilter }) => {
           </label>
         </div>
       </div>
-        <div className="filter-group">
+      <div className="filter-group">
         <label>צורת הלמידה:</label>
         <div>
           <label>
@@ -262,65 +262,65 @@ const FilterComponent = ({ onFilter }) => {
         </div>
       </div>
       <div className="filter-group">
-  <label>רמת השכלה:</label>
-  <div>
-    <label>
-      <input
-        type="checkbox"
-        checked={educationLevel.undergraduate}
-        onChange={() => handleCheckboxChange('educationLevel', 'undergraduate')}
-      />
-      סטודנט של האוניברסיטה
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        checked={educationLevel.graduate}
-        onChange={() => handleCheckboxChange('educationLevel', 'graduate')}
-      />
-      תואר ראשון
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        checked={educationLevel.postGraduate}
-        onChange={() => handleCheckboxChange('educationLevel', 'postGraduate')}
-      />
-      תואר שני
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        checked={educationLevel.doctoral}
-        onChange={() => handleCheckboxChange('educationLevel', 'doctoral')}
-      />
-      דוקטורט
-    </label>
-  </div>
-</div>
+        <label>רמת השכלה:</label>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={educationLevel.undergraduate}
+              onChange={() => handleCheckboxChange('educationLevel', 'undergraduate')}
+            />
+            סטודנט של האוניברסיטה
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={educationLevel.graduate}
+              onChange={() => handleCheckboxChange('educationLevel', 'graduate')}
+            />
+            תואר ראשון
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={educationLevel.postGraduate}
+              onChange={() => handleCheckboxChange('educationLevel', 'postGraduate')}
+            />
+            תואר שני
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={educationLevel.doctoral}
+              onChange={() => handleCheckboxChange('educationLevel', 'doctoral')}
+            />
+            דוקטורט
+          </label>
+        </div>
+      </div>
 
-<div className="filter-group">
-  <label>שפת האם:</label>
-  <div>
-    <label>
-      <input
-        type="checkbox"
-        checked={nativeLanguage.hebrew}
-        onChange={() => handleCheckboxChange('nativeLanguage', 'hebrew')}
-      />
-      עברית
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        checked={nativeLanguage.english}
-        onChange={() => handleCheckboxChange('nativeLanguage', 'english')}
-      />
-      אנגלית
-    </label>
-    {/* Add more languages if needed */}
-  </div>
-</div>
+      <div className="filter-group">
+        <label>שפת האם:</label>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={nativeLanguage.hebrew}
+              onChange={() => handleCheckboxChange('nativeLanguage', 'hebrew')}
+            />
+            עברית
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={nativeLanguage.english}
+              onChange={() => handleCheckboxChange('nativeLanguage', 'english')}
+            />
+            אנגלית
+          </label>
+          {/* Add more languages if needed */}
+        </div>
+      </div>
       <button onClick={handleFilterChange}>סנן</button>
     </div>
   );
