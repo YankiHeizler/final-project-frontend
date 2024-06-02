@@ -2,6 +2,8 @@
 
 .main-content {
   display: flex;
+  background: linear-gradient(135deg, #00bfff, #1e90ff, #4169e1, #00008b); /* גרדיאנט כחלחל משתנה */
+
 }
 
 .calendar-container {
@@ -19,11 +21,28 @@
 
 .lecturers-list h2 {
   margin-bottom: 10px;
+  font-family: Arial, sans-serif;
+  /* font-family: Arial, sans-serif; */
+  /* background-color: rgba(13, 123, 159, 0.435); */
+  /* background: linear-gradient(135deg, #1abc9c, #16a085); גרדיאנט כחול טורקיז */
+  background: linear-gradient(135deg, #00bfff, #1e90ff, #4169e1, #00008b); /* גרדיאנט כחלחל משתנה */
+  text-align: center;
+  font-size: 34px; 
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
 }
 
 .lecturers-list ul {
   list-style-type: none;
   padding: 0;
+  /* background: linear-gradient(135deg, #1abc9c, #16a085); גרדיאנט כחול טורקיז */
+  background: linear-gradient(135deg, #00bfff, #1e90ff, #4169e1, #00008b); /* גרדיאנט כחלחל משתנה */
+  font-family: Arial, sans-serif;
+  color: #1e0606; /* צבע טקסט לבן */
+  padding: 10px;
+  border-radius: 5px; /* פינות מעוגלות */
+  text-align: center; /* טקסט במרכז */
 }
 
 .lecturers-list li {
@@ -32,7 +51,10 @@
   margin: 5px 0;
   border: 1px solid #ddd;
   border-radius: 4px;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
+  /* background: linear-gradient(135deg, #1abc9c, #16a085): */
+  background: linear-gradient(135deg, #00bfff, #1e90ff, #4169e1, #00008b); /* גרדיאנט כחלחל משתנה */
+
   transition: background-color 0.3s;
 }
 
