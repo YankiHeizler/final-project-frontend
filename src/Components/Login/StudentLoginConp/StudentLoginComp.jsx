@@ -12,45 +12,14 @@ const StudentLoginComp = () => {
     { name: 'isLecturerurl', titel: 'כניסה למרצה', type: 'checkbox', default: false }
   ]
 
-  // const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
-  
   const togglePopup = () => {
-    // setIsOpen(!isOpen);
-    {
       navigate(-1);
-    }
   };
-  const saveToken = (token) => {
-    localStorage.setItem('fToken', token);
-  };
-  const getToken = () => {
-    return localStorage.getItem('fToken');
-  };
-
-
-  //   const getUser = async (pro) =>{
-  //     document.addEventListener("DOMContentLoaded", function(event){
-  //       const checkbox = document.querySelector('input[type="checkbox"]');
-  //       const isChecked = checkbox.checked;
-  //     })
-  //     const Url = LOGINSTUDENTURL
-  //     if(isChecked){
-  //       Url = LOGINLECTURERURL
-  //     }
-  //     const req = await axios.get(`${Url}${pro}`)
-  //     console.log(req.data);
-  //     return req.data
-  // }
-
 
   const login = async (data) => {
-    // console.log(data);
-
     const { Pass, Email, isLecturerurl } = data;
     const url = isLecturerurl ? LOGINLECTURERURL : LOGINSTUDENTURL;
-    console.log(url);
-
     let userDetails;
     if (isLecturerurl) {
       const lecPass = Pass;
@@ -61,17 +30,12 @@ const StudentLoginComp = () => {
       const studEmail = Email;
       userDetails = { studPass, studEmail };
     }
-
-
-    // console.log(userDetails );
     const res = await axios.post(url, { userDetails }, { withCredentials: true })
     return (res)
-    console.log(res.data);
-  }
+    }
 
   return (
     <>
-      {/* <button onClick={togglePopup}>LOGIN</button> */}
       <Popup open={true} closeFn={togglePopup}>
         <Login fields={data} func={login} titel={'כניסה'} />
         <div>

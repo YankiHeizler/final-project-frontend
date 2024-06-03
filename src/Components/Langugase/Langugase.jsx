@@ -3,16 +3,15 @@ import axios from 'axios';
 import './Langugase.css';
 import ProductList from '../ProductList/ProductList';
 
-
-
 const Show = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    //כדאי לקבל את הURL מהקובץ של URLS
     axios.get('http://localhost:3008/api/languages')
       .then(response => {
         setProducts(response.data.languages);
-        console.log(response.data.languages);
+        // console.log(response.data.languages);
       })
       .catch(error => {
         console.error('Error fetching products:', error);
@@ -21,7 +20,6 @@ const Show = () => {
 
   return (
     <div>
-      
       <ProductList products={products} />
     </div>
   );
