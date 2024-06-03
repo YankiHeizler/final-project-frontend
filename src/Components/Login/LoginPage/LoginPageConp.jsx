@@ -39,7 +39,6 @@ function Login({ fields, func, titel }) {
     // console.log(checked);
     // console.log('xxxxxxxxxxxxxxxxxx');
     const newData = { ...data };
-    // const [selectedOptions, setSelectedOptions] = useState([]);
     if (checked) {
       newData[name] = [...newData[name], value];
     }
@@ -61,12 +60,7 @@ function Login({ fields, func, titel }) {
     const newData = { ...data };
     // console.log(newData);
     const theDay = newData.lecTimeTable.find((day) => day.day == name);
-    // console.log(newData.lecTimeTable);
-    // const [selectedOptions, setSelectedOptions] = useState([]);
-    
-    // if(!newData.lecTimeTable.name){
-    //   newData.lecTimeTable[name] = []
-    // }
+    // console.log(newData.lecTimeTable);    
     if (! theDay) {
       console.error(`Day ${name} not found`);
       return;
@@ -146,12 +140,3 @@ function Login({ fields, func, titel }) {
   );
 }
 export default Login;
-
-// <div className='ex1' name = {pra.name}  onChange={multipleOnChange} >
-//   {pra.options.map((opt) => (
-//     <div key={opt}>
-//     <input type='checkbox' name={pra.name} value={opt} id={opt} />
-//     <label htmlFor={opt}>{opt}</label>
-//   </div>
-//   ))}
-// </div>
