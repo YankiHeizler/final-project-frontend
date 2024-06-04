@@ -1,9 +1,7 @@
 import Calendar from "../../Components/Calendar/Calendar.jsx";
-import { getConecshen } from "./Scheduler.helper.jsx";;
-
-// import { /*studentScheduleActive,*/ lecturerSchedule } from "./Scheduler.helper.js";
-import { getStudentData } from "./Scheduler.helper.jsx";
-import { getLecData } from "./Scheduler.helper.jsx";
+import PopupComponent from "../../Components/Calendar/BotomCalendar.jsx";
+import { getConecshen,getStudentData ,getConnectionSchedule} from "./Scheduler.helper.jsx";;
+// import { getLecData } from "./Scheduler.helper.jsx";
 import { useEffect, useState } from "react";
 import HeaderComp from '../../Components/Header/HeaderComp.jsx'
 import "./Scheduler.css";
@@ -27,63 +25,93 @@ import "./Scheduler.css";
 //   };
 
 
-// }
-// const lecturers = []
-//   { id: 0, name: 'your schedule', schedule: getStudentData() },
-//   { id: 1, name: "Lecturer 1", schedule: lecturerSchedule },
-//   { id: 2, name: "Lecturer 2", schedule: lecturerSchedule },
-//   // Add more lecturers if needed 
-// ];
 
-function Schedulerr() {
-  const [currentSchedule, setCurrentSchedule] = useState({});
-  const [currentConectionSchedule,setCurrentConectionSchedule] =useState({});
-  const [lecturers, setLecturers] = useState([])
+
+
+function Schedulerr({ tokenID }) {
+  const [currentScheduleStu, setCurrentScheduleStu] = useState({});
+  const [displayedSchedule, setDisplayedSchedule] = useState({});
+  const [isLecture, setIsLecture] = useState(false);
+  // const [currentConectionSchedule, setCurrentConectionSchedule] = useState({});
+  const [connections, setConnections] = useState([]);
+  const [connections2, setConnections2] = useState([]);
+  //const [lecturers, setLecturers] = useState([])
 
   const fetchStudentData = async () => {
-    const dataa = await getStudentData()
-    setCurrentSchedule(dataa)
+    const data = await getStudentData()
+    setCurrentScheduleStu(data)
+    setDisplayedSchedule(data)
   }
-  const fetchLecData = async()=>{
-    const Data = await  getLecData()
-    setCurrentConectionSchedule(Data)
-  }
+  // const fetchLecData = async () => {
+  //   const Data = await getLecData()
+  //   setCurrentConectionSchedule(Data)
+  // }
 
   const fetchConnections = async () => {
     const data = await getConecshen()
-    console.log(data);
-    setLecturers(data.connectionStudLec)
+    if (data.status === 'success') {
+      setConnections(data.connectionStudLec);
+      setConnections2(data)
+    }
+    //setLecturers(data.lecturers)
+  }
+
+  const fetchAll = async () => {
+    await fetchStudentData()
+    await fetchConnections()
+    // await fetchLecData()
+
   }
 
   useEffect(() => {
-    fetchStudentData()
-    fetchConnections()
-    fetchLecData()
+    fetchAll();
   }, [])
 
-  const handleLecturerClick = (schedule) => {
-    setCurrentSchedule(schedule);
+  const handleConnectionsClick = async (conection) => {
+    const data = await getConnectionSchedule(conection._id)
+    setDisplayedSchedule(data);
+    setIsLecture(true)
   };
+  const handleMyScheduleClick = () => {
+    setDisplayedSchedule(currentScheduleStu);
+    setIsLecture(false)
+
+  };
+  
   return (
     <div className="App">
       <HeaderComp />
       <div className="main-content">
-        <Calendar schedule={currentSchedule} />
-        <div className="lecturers-list">
+        <Calendar isLecture={isLecture} schedule={displayedSchedule} />
 
-          <h2>Lecturers</h2>
-          
-          <ul>
-            {lecturers?.map(lecturer => (
+        <div className="lecturers-list">
+          <PopupComponent />
+          <h2>My Conections</h2>
+          <h3 key={tokenID} className="button-like" onClick={() => handleMyScheduleClick()}>my schedule</h3>
+          {/* <ul>
+              {connections?.map(connection => (
               <li
-                key={lecturer._id}
-                onClick={() => handleLecturerClick(lecturer.schedule)}
+                key={connection._id}
+                onClick={() => handleCcnnectionsClick(connection._id)}
               >
-                {lecturer.lecID.lecFName}-{lecturer.lecID.lecLName} :{lecturer.connLang}
+                {connection.lecID.lecFName} {connection.lecID.lecLName} :{connection.connLang}
               </li>
             ))}
-          </ul>
+          </ul> */}
+          
+          {connections && (
+            <ul>
+              {connections.map((connection ,index) => (
+                <li key={index} onClick={() => handleConnectionsClick(connection)}
+                >
+                  {connection?.lecID?.lecFName} {connection?.lecID?.lecLName} :{connection?.connLang}</li>
+              ))}
+              
+            </ul>
+          )}
+          
         </div>
+        
       </div>
     </div>
   );

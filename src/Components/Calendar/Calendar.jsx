@@ -1,12 +1,24 @@
 // src/Calendar.js
 
-import React from "react";
+import React,{useState} from "react";
 import fetchData from '../../Pages/Scheduler/Scheduler'
 import "./Calendar.css"; // Add some basic styling
 // import { getStudentData } from "../../Pages/Scheduler/Scheduler.helper.js";
 // const schedule = getStudentData
-const Calendar = ({ schedule }) => {
-  console.log(schedule);
+const Calendar = ({ schedule,isLecture}) => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleOpenPopup = () => {
+    if (!isLecture) return;
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+  const addLesson=(lesson,dayIndex)=>{
+    handleOpenPopup()
+  }
   if (!schedule) 
     return <div></div>
 
@@ -15,7 +27,7 @@ const Calendar = ({ schedule }) => {
   const maxLessons = schedule && schedule.lessons 
         ? Math.max(...schedule.lessons.map((day) => day.length)) : 0;
 
-  return (
+  return (<>
     <div className="calendar-container">
       <table className="calendar-table">
         <thead>
@@ -46,7 +58,7 @@ const Calendar = ({ schedule }) => {
                         <div>{lesson.connLang ? lesson.connLang : <span>&nbsp;</span>}</div>
                           {/* {lesson.lecName} */}
                         <div>{lesson.lecName ? lesson.lecName : <span>&nbsp;</span>}</div>
-                        
+                        {lesson.status==='available'&&  <button onClick={()=>addLesson(lesson,dayIndex)}>קבע שיעור</button>}
                         </div>
                       </>
                   </td>
@@ -56,7 +68,16 @@ const Calendar = ({ schedule }) => {
           ))}
         </tbody>
       </table>
+      
     </div>
+    {showPopup && isLecture &&(
+      <div className="popup">
+        <h2>חלון פופאפ</h2>
+        <p>תוכן הפופאפ</p>
+        <button onClick={handleClosePopup}>סגירת חלון פופאפ</button>
+      </div>
+    )}
+    </>
   );
 };
 

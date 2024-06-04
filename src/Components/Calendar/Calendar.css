@@ -50,7 +50,6 @@
 }
 .y{
   /* background-color : #f8b3b3f8; */
-    background: linear-gradient(135deg, #1abc9c, #16a085); 
     color:#d4b5f1;
     text-shadow: 
         1px 1px 2px rgba(0, 0, 0, 0.7),
@@ -58,5 +57,23 @@
       padding: 10px;
       border-radius: 5px; /* פינות מעוגלות */
       text-align: center; /* טקסט במרכז */
+      background: linear-gradient(135deg, #00bfff, #1e90ff, #4169e1, #3737a5); /* גרדיאנט כחלחל משתנה */
 
+}
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  
+}
+
+.popup.show {
+  display: block;
 }
