@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './LoginPageStyile.css'
 import MultipleCompo from '../../MultipleCompo/MultipleCompo';
+import { Button, TextField } from '@mui/material';
+import Checkbox from '@mui/material/Checkbox';
 
 function Login({ fields, func, titel }) {
 
@@ -124,13 +126,16 @@ function Login({ fields, func, titel }) {
                         ))}
                       </select>
                       ) :
-                      (<input id={`${pra.name}-${index}`} name={pra.name} type={pra.type} required={pra.required} onChange={handleChange} />
+                      pra.type=="checkbox" ?
+                      (<Checkbox id={`${pra.name}-${index}`} name={pra.name} required={pra.required} onChange={handleChange} />) :
+                      (<TextField fullWidth label={pra.name} variant="outlined" id={`${pra.name}-${index}`} name={pra.name} type={pra.type} required={pra.required} onChange={handleChange} />
                       )}
                     </div>
 
 
                   )}
-              <input type="submit" />
+                  <br/>
+              <Button variant="contained" type="submit">שלח</Button>
             </form>
         { error && <div>error:{error}</div>}
 

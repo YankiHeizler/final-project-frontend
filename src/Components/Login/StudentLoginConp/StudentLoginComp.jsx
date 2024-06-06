@@ -38,10 +38,11 @@ const StudentLoginComp = () => {
     <>
       <Popup open={true} closeFn={togglePopup}>
         <Login fields={data} func={login} titel={'כניסה'} />
-        <div>
-          <Link to={'/student-enrollment'} > יצירת סטודנט חדש </Link>
+        <div style={{display:"flex",justifyContent:"center",flexDirection:"column",alignItems:"center"}}>
+          <br/>
+          <Link style={{color:"purple",fontSize:"18px"}} to={'/student-enrollment'} >סטודנט חדש? הרשם</Link>
           <br />
-          <Link to={'/lecturer-enrollment'} > יצירת מרצה חדש </Link>
+          <Link style={{color:"purple",fontSize:"18px"}} to={'/lecturer-enrollment'} >מרצה חדש? הרשם</Link>
         </div>
       </Popup>
     </>
