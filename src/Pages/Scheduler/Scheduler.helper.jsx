@@ -1,5 +1,5 @@
 
-
+// import { addLesson } from "../../Components/Calendar/Calendar.jsx"
 import axios from "axios";
   export async function  getStudentData() {
   try {
@@ -47,3 +47,35 @@ export async function  getConnectionSchedule(id) {
 //     console.error(error)
 //   }
 // }
+//בקשת פוסט לקביעת שיעור
+
+// export async function postSetLesson(hoer,date,messag,coonectionID) {
+//   console.log(coonectionID);
+//   const data ={hoer,date,messag}
+//   try {
+//     const res = await axios.post('http://localhost:3008/api/lecTimeTable/'+coonectionID, data, { withCredentials: true });
+
+//     return res.data;
+//   } catch (error) {
+//     console.error("Error posting student data:", error);
+//   }
+// }
+
+
+export const postSetLesson = async (hour, date, message, connectionID) => {
+console.log(connectionID);
+  try {
+    const response = await axios.post(`http://localhost:3008/api/lessonsStudLec/${connectionID}`, {
+      hour,
+      date,
+      message,
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error posting student data:', error);
+    throw error;
+  }
+};
+
+
+
