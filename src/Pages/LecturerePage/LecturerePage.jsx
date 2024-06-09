@@ -1,5 +1,3 @@
-
-
 const LecturerePage = () => {
   return (
     <div>LecturerePageeee
@@ -47,7 +45,7 @@ const LecturerDetailsPage = () => {
     return <div>Loading...</div>;
   }
 
-  // const LecturerCard = ({ product }) => {
+ 
     return (
       <>
       <HeaderComp />
@@ -74,18 +72,7 @@ const LecturerDetailsPage = () => {
       </>
     );
   };
-  
-//   return (
-//     <div>
-//       <HeaderComp />
-//       {/* <h1>{lecturer.lecFName}</h1>
-//       <p>{lecturer.lecLName}</p>
-//       <p>Specialty: {lecturer.lecEduc}</p> */}
-//        <LecturerCard  product={lecturer} /> 
 
-//     </div>
-//   );
-// };
 
 export default LecturerDetailsPage;
 
