@@ -256,7 +256,7 @@ function Schedulerr( {tokenID} ) {
   const [ConnectionSchedule, setConnectionSchedule] = useState({})
 
   const [connectionId, setConnectionId] = useState(null)
-  
+  console.log(currentScheduleStu);
   // פונקציה לאחזור לוח זמנים של קשרים מהשרת
   // const fetchConnectionSchedule = async () => {
   //   const data = await getConnectionSchedule()
@@ -284,7 +284,8 @@ function Schedulerr( {tokenID} ) {
       console.log(data);
     }
   }
-
+  console.log(connections);
+  getConnectionSchedule
   // פונקציה לאחזור כל הנתונים הדרושים לקריאה הראשונה
   const fetchAll = async () => {
     await fetchStudentData();
@@ -308,7 +309,8 @@ function Schedulerr( {tokenID} ) {
     const data = await getConnectionSchedule(connection._id);
     console.log(connection._id);
     console.log(connection);
-
+    setConnectionSchedule(data)
+    console.log(data);
     setDisplayedSchedule(data);
     setIsLecture(true);
     setLoadingConnection(false);
@@ -326,6 +328,7 @@ function Schedulerr( {tokenID} ) {
 
   // מדפיסה את האובייקט connections
   console.log(connections);
+  console.log(currentScheduleStu);
 
   return (
     <div className="App">

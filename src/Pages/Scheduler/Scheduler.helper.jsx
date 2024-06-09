@@ -1,22 +1,23 @@
 
 // import { addLesson } from "../../Components/Calendar/Calendar.jsx"
+import { format } from 'date-fns';
 import axios from "axios";
-  export async function  getStudentData() {
+export async function getStudentData() {
   try {
-    const res = await axios.get('http://localhost:3008/api/studentTimeTable',{withCredentials:true});
+    const res = await axios.get('http://localhost:3008/api/studentTimeTable', { withCredentials: true });
     // const res = await axios.get('http://localhost:3008/api/studentTimeTable',{headers:{'cookie':`${xtoken}`}});
     // const res = await axios.get('http://localhost:3008/api/studentTimeTable');
 
     return res.data
   } catch (error) {
-    console.error("Error fetching student data:",error)
+    console.error("Error fetching student data:", error)
   }
 }
 
 
-  export async function  getConecshen() {
+export async function getConecshen() {
   try {
-    const res = await axios.get('http://localhost:3008/api/connectionStudLec',{withCredentials:true});
+    const res = await axios.get('http://localhost:3008/api/connectionStudLec', { withCredentials: true });
     // const res = await axios.get('http://localhost:3008/api/studentTimeTable',{headers:{'cookie':`${xtoken}`}});
     // const res = await axios.get('http://localhost:3008/api/studentTimeTable');
 
@@ -25,17 +26,18 @@ import axios from "axios";
     console.error(error)
   }
 }
-export async function  getConnectionSchedule(id){
+export async function getConnectionSchedule(id) {
   try {
     const idOfConnection = id
-
+    const d = '2024-06-23'
     // const res = await axios({
     //   method:'get',
     //   url:'http://localhost:3008/api/studentLessTimeTable/'+id,
     //   data:{UserFirstDate:new Date()},
     //   headers:{withCredentials:true}
     // })
-       const res = await axios.get('http://localhost:3008/api/studentLessTimeTable/'+id,{withCredentials:true});
+    console.log(id);
+    const res = await axios.get('http://localhost:3008/api/studentLessTimeTable/' + id, { withCredentials: true });
     // const res = await axios.get('http://localhost:3008/api/studentTimeTable',{headers:{'cookie':`${xtoken}`}});
     // const res = await axios.get('http://localhost:3008/api/studentTimeTable');
 
@@ -68,7 +70,7 @@ export async function  createConnectionSchedule(id,langId){
 // export async function  getLecData() {
 //   try {
 //     const res = await axios.get('http://localhost:3008/api/studentLessTimeTable',{withCredentials:true});
- 
+
 //     return res.data
 //   } catch (error) {
 //     console.error(error)
@@ -89,20 +91,56 @@ export async function  createConnectionSchedule(id,langId){
 // }
 
 
-export const postSetLesson = async (hour, date, message, connectionID) => {
-console.log(connectionID);
+// export const postSetLesson = async (hour, datee, message, connectionID) => {
+// console.log(datee);
+// const date = format(datee, 'yyyy-MM-dd'); // המרת התאריך לפורמט YYYY-MM-DD
+
+
+// console.log(connectionID);
+
+// console.log(date);
+
+//   try {
+//     const response = await axios.post(`http://localhost:3008/api/lessonsStudLec/${connectionID}`, {
+//       hour,
+//       date,
+//       message,
+
+//     });
+//     return response.data;
+//   } catch (error) {
+//     console.error('Error posting student data:', error);
+//     throw error;
+//   }
+// };
+
+// Utility function
+const myFormat = (dateString) => {
+  const date = new Date();
+  const sep = dateString.split('.');
+
+  date.setDate(sep[0]);
+  date.setMonth(parseInt(sep[1]) - 1);
+  date.setFullYear(sep[2]);
+
+  return date;
+}
+
+
+export const postSetLesson = async (hour, datee, message, connectionID) => {
+  const date = format(myFormat(datee), 'yyyy-MM-dd'); // המרת התאריך לפורמט YYYY-MM-DD
+
   try {
     const response = await axios.post(`http://localhost:3008/api/lessonsStudLec/${connectionID}`, {
-      hour,
-      date,
-      message,
-    });
+      lessTime: hour,
+      lessDate: date,
+      lessMessage: message,
+
+    }, { withCredentials: true });
     return response.data;
   } catch (error) {
     console.error('Error posting student data:', error);
     throw error;
   }
 };
-
-
 

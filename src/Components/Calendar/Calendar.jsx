@@ -146,25 +146,375 @@
 
 
 
-import {postSetLesson} from "../../Pages/Scheduler/Scheduler.helper"
-import React,{useState,useEffect} from "react";
-import fetchData from '../../Pages/Scheduler/Scheduler'
-import "./Calendar.css"; // Add some basic styling
-import { Spinner } from 'react-bootstrap';
+// import {postSetLesson} from "../../Pages/Scheduler/Scheduler.helper"
+// import React,{useState,useEffect} from "react";
+// import fetchData from '../../Pages/Scheduler/Scheduler'
+// import "./Calendar.css"; // Add some basic styling
+// import { Spinner } from 'react-bootstrap';
 
-const Calendar = ({schedule,isLecture,connectionForId}) => {
-  const [showPopupAv, setShowPopupAv] = useState(false);
-  const [showPopupBocd, setShowPopupBocd] = useState(false);
+// const Calendar = ({schedule,isLecture,connectionForId}) => {
+//   const [showPopupAv, setShowPopupAv] = useState(false);
+//   const [showPopupBocd, setShowPopupBocd] = useState(false);
  
 
-  const handleOpenPopupAv = () => {
+//   const handleOpenPopupAv = () => {
+//     if (!isLecture) return;
+//     setShowPopupAv(true);
+//     console.log(showPopupAv);
+//   };
+
+//   const handleClosePopupAv = () => {
+//     setShowPopupAv(false);
+//   };
+
+//   const handleOpenPopupBocd = () => {
+//     if (!isLecture) return;
+//     setShowPopupBocd(true);
+//   };
+
+//   const handleClosePopupBocd = () => {
+//     setShowPopupBocd(false);
+//   };
+
+  
+//   const addLesson = (hoer, date, messag ) => {
+//     if(!connectionForId)return
+    
+//     postSetLesson(hoer, date, messag,connectionForId);
+//     handleOpenPopupAv();
+//   }
+    
+  
+
+//   const delLesson = (lesson, dayIndex) => {
+//     handleOpenPopupBocd();
+//   }
+
+//   if (!schedule) 
+//     return <div></div>
+
+//   const maxLessons = schedule && schedule.lessons 
+//         ? Math.max(...schedule.lessons.map((day) => day.length)) : 0;
+  
+//   return (
+//     <>
+//       <div className="calendar-container">
+//         <table className="calendar-table">
+//           <thead>
+//             <tr className="y">
+//               {schedule?.dates?.map((date, index) => (
+//                 <th key={index}>{date}</th> 
+//               ))}
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {Array.from({ length: maxLessons }).map((_, lessonIndex) => (
+//               <tr key={lessonIndex}>
+//                 {schedule.lessons.map((lessons, dayIndex) => {
+//                   const lesson = lessons[lessonIndex];
+                  
+//                   return (
+//                     <td
+//                       key={dayIndex}
+//                       style={{ backgroundColor: lesson?.backgroundColor || "white" }}
+//                     >
+//                       <div className="x">
+//                         <div>{lesson?.hour ? lesson.hour : <span>&nbsp;</span>}</div>
+//                         <div>{lesson?.status ? lesson.status : <span>&nbsp;</span>}</div>
+//                         <div>{lesson?.connLang ? lesson.connLang : <span>&nbsp;</span>}</div>
+//                         <div>{lesson?.lecName ? lesson.lecName : <span>&nbsp;</span>}</div>
+//                         {lesson?.status === 'available' &&  
+//                           <button onClick={() => addLesson(lesson.hour, schedule.dates[dayIndex], 'הודעה' )}>קבע שיעור</button>
+//                         }
+//                         {lesson?.status === 'already scheduled' &&  
+//                           <button onClick={() => delLesson(lesson, dayIndex)}>לפרטים נוספים</button>
+//                         }
+//                       </div>
+//                     </td>
+//                   );
+//                 })}
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+      
+//       {showPopupAv && isLecture && (
+//         <div className="popupBack">
+//           <div className="popup">
+//             <h2>קבע שיעור</h2>
+//             <p>תוכן הפופאפ</p>
+//             {/* <input type="text" /> */}
+//             <button onClick={addLesson()}>לקביעת שיעור </button>
+//             <button onClick={handleClosePopupAv}>סגור</button>
+//           </div>
+//         </div>
+//       )}
+
+//       {showPopupBocd && isLecture && (
+//         <div className="popupBack">
+//           <div className="popupp">
+//             <h2>לפרטים</h2>
+//             <p>תוכן הפופאפ</p>
+//             <button onClick={handleClosePopupBocd}>סגור</button>
+//           </div>
+//         </div>
+//       )}
+//     </>
+//   );
+// };
+
+// export default Calendar;
+
+// import { postSetLesson } from "../../Pages/Scheduler/Scheduler.helper";
+// import React, { useState } from "react";
+// import "./Calendar.css"; // ייבוא קובץ CSS לעיצוב בסיסי
+
+// const Calendar = ({ schedule, isLecture, connectionForId }) => {
+//   const [showPopupAv, setShowPopupAv] = useState(false);
+//   const [showPopupBocd, setShowPopupBocd] = useState(false);
+//   const [currentLesson, setCurrentLesson] = useState(null);
+
+//   const handleOpenPopupAv = (lesson) => {
+//     if (!isLecture) return;
+//     setCurrentLesson(lesson);
+//     setShowPopupAv(true);
+//   };
+
+//   const handleClosePopupAv = () => {
+//     setShowPopupAv(false);
+//     setCurrentLesson(null);
+//   };
+
+//   const handleOpenPopupBocd = () => {
+//     if (!isLecture) return;
+//     setShowPopupBocd(true);
+//   };
+
+//   const handleClosePopupBocd = () => {
+//     setShowPopupBocd(false);
+//   };
+
+//   const addLesson = (hoer, date, messag) => {
+//     if (!connectionForId) return;
+//     postSetLesson(hoer, date, messag, connectionForId);
+//     handleClosePopupAv();
+//   };
+
+//   const delLesson = (lesson, dayIndex) => {
+//     handleOpenPopupBocd();
+//   };
+
+//   if (!schedule) return <div></div>;
+
+//   const maxLessons = schedule && schedule.lessons 
+//     ? Math.max(...schedule.lessons.map((day) => day.length)) 
+//     : 0;
+
+//   return (
+//     <>
+//       <div className="calendar-container">
+//         <table className="calendar-table">
+//           <thead>
+//             <tr className="y">
+//               {schedule?.dates?.map((date, index) => (
+//                 <th key={index}>{date}</th>
+//               ))}
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {Array.from({ length: maxLessons }).map((_, lessonIndex) => (
+//               <tr key={lessonIndex}>
+//                 {schedule.lessons.map((lessons, dayIndex) => {
+//                   const lesson = lessons[lessonIndex];
+//                   return (
+//                     <td
+//                       key={dayIndex}
+//                       style={{ backgroundColor: lesson?.backgroundColor || "white" }}
+//                     >
+//                       <div className="x">
+//                         <div>{lesson?.hour ? lesson.hour : <span>&nbsp;</span>}</div>
+//                         <div>{lesson?.status ? lesson.status : <span>&nbsp;</span>}</div>
+//                         <div>{lesson?.connLang ? lesson.connLang : <span>&nbsp;</span>}</div>
+//                         <div>{lesson?.lecName ? lesson.lecName : <span>&nbsp;</span>}</div>
+//                         {lesson?.status === 'available' &&  
+//                           <button onClick={() => handleOpenPopupAv(lesson)}>קבע שיעור</button>
+//                         }
+//                         {lesson?.status === 'already scheduled' &&  
+//                           <button onClick={() => delLesson(lesson, dayIndex)}>לפרטים נוספים</button>
+//                         }
+//                       </div>
+//                     </td>
+//                   );
+//                 })}
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+
+//       {showPopupAv && isLecture && (
+//         <div className="popupBack">
+//           <div className="popup">
+//             <h2>קבע שיעור</h2>
+//             <p>תוכן הפופאפ</p>
+//             <button onClick={() => addLesson(currentLesson.hour, schedule.dates[schedule.lessons.findIndex(day => day.includes(currentLesson))], 'הודעה')}>לקביעת שיעור</button>
+//             <button onClick={handleClosePopupAv}>סגור</button>
+//           </div>
+//         </div>
+//       )}
+
+//       {showPopupBocd && isLecture && (
+//         <div className="popupBack">
+//           <div className="popupp">
+//             <h2>לפרטים</h2>
+//             <p>תוכן הפופאפ</p>
+//             <button onClick={handleClosePopupBocd}>סגור</button>
+//           </div>
+//         </div>
+//       )}
+//     </>
+//   );
+// };
+
+// export default Calendar;
+
+// import { postSetLesson } from "../../Pages/Scheduler/Scheduler.helper";
+// import React, { useState } from "react";
+// import "./Calendar.css"; // ייבוא קובץ CSS לעיצוב בסיסי
+
+// const Calendar = ({ schedule, isLecture, connectionForId }) => {
+//   const [showPopupAv, setShowPopupAv] = useState(false);
+//   const [showPopupBocd, setShowPopupBocd] = useState(false);
+//   const [currentLesson, setCurrentLesson] = useState(null);
+
+//   const handleOpenPopupAv = (lesson) => {
+//     if (!isLecture) return;
+//     setCurrentLesson(lesson);
+//     setShowPopupAv(true);
+//   };
+
+//   const handleClosePopupAv = () => {
+//     setShowPopupAv(false);
+//     setCurrentLesson(null);
+//   };
+
+//   const handleOpenPopupBocd = () => {
+//     if (!isLecture) return;
+//     setShowPopupBocd(true);
+//   };
+
+//   const handleClosePopupBocd = () => {
+//     setShowPopupBocd(false);
+//   };
+
+//   const addLesson = (hoer, date, messag) => {
+//     if (!connectionForId) return;
+//     postSetLesson(hoer, date, messag, connectionForId);
+//     handleClosePopupAv();
+//   };
+
+//   const delLesson = (lesson, dayIndex) => {
+//     handleOpenPopupBocd();
+//   };
+
+//   if (!schedule) return <div></div>;
+
+//   const maxLessons = schedule && schedule.lessons 
+//     ? Math.max(...schedule.lessons.map((day) => day.length)) 
+//     : 0;
+
+//   return (
+//     <>
+//       <div className="calendar-container">
+//         <table className="calendar-table">
+//           <thead>
+//             <tr className="y">
+//               {schedule?.dates?.map((date, index) => (
+//                 <th key={index}>{date}</th>
+//               ))}
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {Array.from({ length: maxLessons }).map((_, lessonIndex) => (
+//               <tr key={lessonIndex}>
+//                 {schedule.lessons.map((lessons, dayIndex) => {
+//                   const lesson = lessons[lessonIndex];
+//                   return (
+//                     <td
+//                       key={dayIndex}
+//                       style={{ backgroundColor: lesson?.backgroundColor || "white" }}
+//                     >
+//                       <div className="x">
+//                         <div>{lesson?.hour ? lesson.hour : <span>&nbsp;</span>}</div>
+//                         <div>{lesson?.status ? lesson.status : <span>&nbsp;</span>}</div>
+//                         <div>{lesson?.connLang ? lesson.connLang : <span>&nbsp;</span>}</div>
+//                         <div>{lesson?.lecName ? lesson.lecName : <span>&nbsp;</span>}</div>
+//                         {lesson?.status === 'available' &&  
+//                           <button onClick={() => handleOpenPopupAv(lesson)}>קבע שיעור</button>
+//                         }
+//                         {lesson?.status === 'already scheduled' &&  
+//                           <button onClick={() => delLesson(lesson, dayIndex)}>לפרטים נוספים</button>
+//                         }
+//                       </div>
+//                     </td>
+//                   );
+//                 })}
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+
+//       {showPopupAv && isLecture && (
+//         <div className="popupBack">
+//           <div className="popup">
+//             <h2>קבע שיעור</h2>
+//             <p>תוכן הפופאפ</p>
+//             <button onClick={() => addLesson(currentLesson.hour, schedule.dates[schedule.lessons.findIndex(day => day.includes(currentLesson))], 'הודעה')}>לקביעת שיעור</button>
+//             <button onClick={handleClosePopupAv}>סגור</button>
+//           </div>
+//         </div>
+//       )}
+
+//       {showPopupBocd && isLecture && (
+//         <div className="popupBack">
+//           <div className="popupp">
+//             <h2>לפרטים</h2>
+//             <p>תוכן הפופאפ</p>
+//             <button onClick={handleClosePopupBocd}>סגור</button>
+//           </div>
+//         </div>
+//       )}
+//     </>
+//   );
+// };
+
+// export default Calendar;
+
+
+
+
+import { postSetLesson } from "../../Pages/Scheduler/Scheduler.helper";
+import React, { useState } from "react";
+import "./Calendar.css"; // ייבוא קובץ CSS לעיצוב בסיסי
+
+const Calendar = ({ schedule, isLecture, connectionForId }) => {
+  const [showPopupAv, setShowPopupAv] = useState(false);
+  const [showPopupBocd, setShowPopupBocd] = useState(false);
+  const [currentLesson, setCurrentLesson] = useState(null);
+  const [message, setMessage] = useState(""); // הוספת מצב להודעה
+
+  const handleOpenPopupAv = (lesson) => {
     if (!isLecture) return;
+    setCurrentLesson(lesson);
     setShowPopupAv(true);
-    console.log(showPopupAv);
   };
 
   const handleClosePopupAv = () => {
     setShowPopupAv(false);
+    setCurrentLesson(null);
+    setMessage(""); // איפוס ההודעה בעת סגירת הפופאפ
   };
 
   const handleOpenPopupBocd = () => {
@@ -176,33 +526,32 @@ const Calendar = ({schedule,isLecture,connectionForId}) => {
     setShowPopupBocd(false);
   };
 
-  // const connectionID = connectionForId?.connectionStudLec[0]?._id || null;
-  // console.log(connectionID);
-  const addLesson = (hoer, date, messag ) => {
-    if(!connectionForId)return
-    handleOpenPopupAv();
-    postSetLesson(hoer, date, messag,connectionForId);
-
-  }
+  const addLesson = () => {
+    if (!connectionForId || !currentLesson) return;
+    postSetLesson(currentLesson.hour, schedule.dates[schedule.lessons.findIndex(day => day.includes(currentLesson))], message, connectionForId);
+    handleClosePopupAv();
+  };
 
   const delLesson = (lesson, dayIndex) => {
     handleOpenPopupBocd();
-  }
+  };
 
-  if (!schedule) 
-    return <div></div>
+  if (!schedule) return <div></div>;
 
-  const maxLessons = schedule && schedule.lessons 
-        ? Math.max(...schedule.lessons.map((day) => day.length)) : 0;
-  
+  const maxLessons = schedule && schedule.lessons
+    ? Math.max(...schedule.lessons.map((day) => day.length))
+    : 0;
+
   return (
     <>
       <div className="calendar-container">
         <table className="calendar-table">
           <thead>
             <tr className="y">
-              {schedule?.dates?.map((date, index) => (
-                <th key={index}>{date}</th> 
+            
+              {schedule?.dates?.map((date, index) =>  (
+                
+                <th key={index}>{date}</th>
               ))}
             </tr>
           </thead>
@@ -211,7 +560,6 @@ const Calendar = ({schedule,isLecture,connectionForId}) => {
               <tr key={lessonIndex}>
                 {schedule.lessons.map((lessons, dayIndex) => {
                   const lesson = lessons[lessonIndex];
-                  
                   return (
                     <td
                       key={dayIndex}
@@ -222,10 +570,10 @@ const Calendar = ({schedule,isLecture,connectionForId}) => {
                         <div>{lesson?.status ? lesson.status : <span>&nbsp;</span>}</div>
                         <div>{lesson?.connLang ? lesson.connLang : <span>&nbsp;</span>}</div>
                         <div>{lesson?.lecName ? lesson.lecName : <span>&nbsp;</span>}</div>
-                        {lesson?.status === 'available' &&  
-                          <button onClick={() => addLesson(lesson.hour, schedule.dates[dayIndex], 'הודעה' )}>קבע שיעור</button>
+                        {lesson?.status === 'available' &&
+                          <button onClick={() => handleOpenPopupAv(lesson)}>קבע שיעור</button>
                         }
-                        {lesson?.status === 'already scheduled' &&  
+                        {lesson?.status === 'already scheduled' &&
                           <button onClick={() => delLesson(lesson, dayIndex)}>לפרטים נוספים</button>
                         }
                       </div>
@@ -237,20 +585,30 @@ const Calendar = ({schedule,isLecture,connectionForId}) => {
           </tbody>
         </table>
       </div>
-      
+
       {showPopupAv && isLecture && (
         <div className="popupBack">
           <div className="popup">
             <h2>קבע שיעור</h2>
-            <p>תוכן הפופאפ</p>
+            <p>לקביעת שיעור</p>
+            
+
+            <input 
+              type="text" 
+              value={message} 
+              onChange={(e) => setMessage(e.target.value)} 
+              placeholder="כתוב למרצה"
+            />
+            <button onClick={addLesson}>לקביעת שיעור</button>
             <button onClick={handleClosePopupAv}>סגור</button>
           </div>
         </div>
       )}
+      
 
       {showPopupBocd && isLecture && (
         <div className="popupBack">
-          <div className="popupp">
+          <div className="popup">
             <h2>לפרטים</h2>
             <p>תוכן הפופאפ</p>
             <button onClick={handleClosePopupBocd}>סגור</button>
