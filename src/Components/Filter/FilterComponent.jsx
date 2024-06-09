@@ -187,22 +187,6 @@ const FilterComponent = ({ onFilter }) => {
           <label>
             <Checkbox
               checked={learningMethods.whatsapp}
-          //     onChange={() => handleCheckboxChange('learningMethods', 'whatsapp')}
-          //   />
-          //   וואטסאפ
-          // </label>
-          // <label>
-          //   <input
-          //     type="checkbox"
-          //     checked={learningMethods.telegram}
-          //     onChange={() => handleCheckboxChange('learningMethods', 'telegram')}
-          //   />
-          //   טלגרם
-          // </label>
-          // <label>
-          //   <input
-          //     type="checkbox"
-          //     checked={learningMethods.zoom}
               onChange={() => handleCheckboxChange('learningMethods', 'zoom')}
             />
             זום
@@ -256,110 +240,7 @@ const FilterComponent = ({ onFilter }) => {
           </label>
         </div>
       </div>
-      {/* <div className="filter-group">
-  <label>רמת השכלה:</label>
-  <div>
-    <label>
-      <input
-        type="checkbox"
-        checked={educationLevel.undergraduate}
-        onChange={() => handleCheckboxChange('educationLevel', 'undergraduate')}
-        />
-        קורסים
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          checked={educationLevel.graduate}
-        onChange={() => handleCheckboxChange('educationLevel', 'undergraduate')}
-      />
-      סטודנט של האוניברסיטה
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        checked={educationLevel.graduate}
-        onChange={() => handleCheckboxChange('educationLevel', 'graduate')}
-      />
-      תואר ראשון
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        checked={educationLevel.postGraduate}
-        onChange={() => handleCheckboxChange('educationLevel', 'postGraduate')}
-      />
-      תואר שני
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        checked={educationLevel.doctoral}
-        onChange={() => handleCheckboxChange('educationLevel', 'doctoral')}
-      />
-      דוקטורט
-    </label>
-  </div>
-</div>
 
-<div className="filter-group">
-  <label>שפת האם:</label>
-  <div>
-    <label>
-      <input
-        type="checkbox"
-        checked={nativeLanguage.hebrew}
-        onChange={() => handleCheckboxChange('nativeLanguage', 'hebrew')}
-      />
-      עברית
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        checked={nativeLanguage.english}
-        onChange={() => handleCheckboxChange('nativeLanguage', 'russian')}
-      />
-      רוסית
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        checked={nativeLanguage.english}
-        onChange={() => handleCheckboxChange('nativeLanguage', 'somali')}
-      />
-      סומלית
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        checked={nativeLanguage.english}
-        onChange={() => handleCheckboxChange('nativeLanguage', 'swedish')}
-      />
-      שוודית
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        checked={nativeLanguage.english}
-        onChange={() => handleCheckboxChange('nativeLanguage', 'chinese')}
-      />
-      סינית
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        checked={nativeLanguage.english}
-        onChange={() => handleCheckboxChange('nativeLanguage', 'english')}
-      />
-      אנגלית
-    </label> */}
-    {/* </div>
-</div> */}
-      <button onClick={handleFilterChange}>סנן</button>
-      
-      </div>
-      </Paper></Fade>
-      </>
   );
 };
 

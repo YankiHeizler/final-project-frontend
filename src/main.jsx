@@ -9,7 +9,6 @@ import LecturerePage from './Pages/LecturerePage/LecturerePage.jsx'
 import SchedulePage from './Pages/SchedulePage/SchedulePage.jsx'
 import LecturerPersonalAreaPage from './Pages/LecturerPersonalAreaPage/LecturerPersonalAreaPage.jsx'
 import StudentPersonalAreaPage from './Pages/StudentPersonalAreaPage/StudentPersonalAreaPage.jsx'
-// import StudentCoursPage from './StudentCoursPage/StudentCoursPage.jsx'
 import StudentLoginComp from './Components/Login/StudentLoginConp/StudentLoginComp.jsx'
 import EnrollmentStudent from './Components/Login/EnrollmentStudent/EnrollmentStudent.jsx'
 import TestPage from './Pages/TestPage/TestPage.jsx'
@@ -19,7 +18,7 @@ import Show from './Components/Langugase/Langugase.jsx'
 import LecturersByLanguage from './Pages/LecturersPage/LectureresPage.jsx'
 import LecturerDetails from './Pages/LecturerePage/LecturerePage.jsx'
 import LecturerDetailsPage from './Pages/LecturerePage/LecturerePage.jsx'
-import  AboutPage  from './Components/About/About.jsx'
+import AboutPage  from './Components/About/About.jsx'
 import PersonalStudentPage from './Pages/PersonalStudentPage/PersonalStudentPage.jsx'
 
 
@@ -43,9 +42,6 @@ const router = createBrowserRouter([
   {path: '/product/lectors/:lecturerId',
     element: <LecturerDetailsPage />
   },
-  // {path: '/lecturer',
-  //   element: <LecturerePage /> 
-  // },
   {
     path: '/schedule',
     element: <SchedulePage /> 
