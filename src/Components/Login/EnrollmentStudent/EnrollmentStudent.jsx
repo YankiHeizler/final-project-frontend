@@ -21,16 +21,15 @@ const EnrollmentStudent = () => {
       
         const navigate = useNavigate();        
         const togglePopup = () => {
-          {
             navigate(-1);
-          }
         };
+
         const login = async ( data ) => {
           const url = CREATSTUDENTURL
           const userDetails = data
           console.log(userDetails);
             const res = await axios.post(url, {userDetails} )
-            console.log(res.data);
+            return (res)
         }
   return (
     <>
