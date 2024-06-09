@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './LoginPageStyile.css'
 import MultipleCompo from '../../MultipleCompo/MultipleCompo';
+import { Button, TextField } from '@mui/material';
+import Checkbox from '@mui/material/Checkbox';
 
 function Login({ fields, func, titel }) {
 
@@ -39,7 +41,6 @@ function Login({ fields, func, titel }) {
     // console.log(checked);
     // console.log('xxxxxxxxxxxxxxxxxx');
     const newData = { ...data };
-    // const [selectedOptions, setSelectedOptions] = useState([]);
     if (checked) {
       newData[name] = [...newData[name], value];
     }
@@ -61,12 +62,7 @@ function Login({ fields, func, titel }) {
     const newData = { ...data };
     // console.log(newData);
     const theDay = newData.lecTimeTable.find((day) => day.day == name);
-    // console.log(newData.lecTimeTable);
-    // const [selectedOptions, setSelectedOptions] = useState([]);
-    
-    // if(!newData.lecTimeTable.name){
-    //   newData.lecTimeTable[name] = []
-    // }
+    // console.log(newData.lecTimeTable);    
     if (! theDay) {
       console.error(`Day ${name} not found`);
       return;
@@ -130,13 +126,16 @@ function Login({ fields, func, titel }) {
                         ))}
                       </select>
                       ) :
-                      (<input id={`${pra.name}-${index}`} name={pra.name} type={pra.type} required={pra.required} onChange={handleChange} />
+                      pra.type=="checkbox" ?
+                      (<Checkbox id={`${pra.name}-${index}`} name={pra.name} required={pra.required} onChange={handleChange} />) :
+                      (<TextField fullWidth label={pra.name} variant="outlined" id={`${pra.name}-${index}`} name={pra.name} type={pra.type} required={pra.required} onChange={handleChange} />
                       )}
                     </div>
 
 
                   )}
-              <input type="submit" />
+                  <br/>
+              <Button variant="contained" type="submit">שלח</Button>
             </form>
         { error && <div>error:{error}</div>}
 
@@ -146,12 +145,3 @@ function Login({ fields, func, titel }) {
   );
 }
 export default Login;
-
-// <div className='ex1' name = {pra.name}  onChange={multipleOnChange} >
-//   {pra.options.map((opt) => (
-//     <div key={opt}>
-//     <input type='checkbox' name={pra.name} value={opt} id={opt} />
-//     <label htmlFor={opt}>{opt}</label>
-//   </div>
-//   ))}
-// </div>

@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import './FilterComponent.css';
+import { Button, Checkbox, Paper } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import Fade from '@mui/material/Fade';
 
 const FilterComponent = ({ onFilter }) => {
   const [gender, setGender] = useState({ male: false, female: false });
@@ -70,22 +74,28 @@ const FilterComponent = ({ onFilter }) => {
     onFilter({ gender, ranks, ageRange, priceRange, learningMethods, experience, educationLevel, nativeLanguage });
   };
 
+  const [isExpanded,setIsExpanded]=useState(false);
   return (
+      <>
+      {isExpanded == false ?
+        <Button variant="outlined" onClick={()=> setIsExpanded(true)}><ExpandMoreIcon />הצג סינון</Button>
+      : <Button variant="outlined" onClick={()=> setIsExpanded(false)}><ExpandLessIcon />הסתר סינון</Button>}
+    <Fade in={isExpanded}>
+    <Paper sx={{ m: 1, width: "100%",height : isExpanded ? '100%':'0px' }} elevation={4}>
     <div className="filter-container">
+
       <div className="filter-group">
         <label>מין:</label>
         <div>
           <label>
-            <input
-              type="checkbox"
+          <Checkbox
               checked={gender.male}
               onChange={() => handleCheckboxChange('gender', 'male')}
             />
             גבר
           </label>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={gender.female}
               onChange={() => handleCheckboxChange('gender', 'female')}
             />
@@ -97,24 +107,21 @@ const FilterComponent = ({ onFilter }) => {
         <label> רמת הלימוד:</label>
         <div>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={ranks.junior}
               onChange={() => handleCheckboxChange('ranks', 'junior')}
             />
             בסיסית
           </label>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={ranks.mid}
               onChange={() => handleCheckboxChange('ranks', 'mid')}
             />
             ביניים
           </label>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={ranks.senior}
               onChange={() => handleCheckboxChange('ranks', 'senior')}
             />
@@ -126,24 +133,21 @@ const FilterComponent = ({ onFilter }) => {
         <label> גיל: </label>
         <div>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={ageRange.under30}
               onChange={() => handleCheckboxChange('ageRange', 'under30')}
             />
             מתחת ל-30
           </label>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={ageRange.from30to50}
               onChange={() => handleCheckboxChange('ageRange', 'from30to50')}
             />
             בין 30 ל-50
           </label>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={ageRange.over50}
               onChange={() => handleCheckboxChange('ageRange', 'over50')}
             />
@@ -155,24 +159,21 @@ const FilterComponent = ({ onFilter }) => {
         <label> תעריף לשיעור:</label>
         <div>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={priceRange.under100}
               onChange={() => handleCheckboxChange('priceRange', 'under100')}
             />
             מתחת ל-100
           </label>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={priceRange.from100to150}
               onChange={() => handleCheckboxChange('priceRange', 'from100to150')}
             />
             בין 100 ל-150
           </label>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={priceRange.over150}
               onChange={() => handleCheckboxChange('priceRange', 'over150')}
             />
@@ -184,32 +185,28 @@ const FilterComponent = ({ onFilter }) => {
         <label>צורת הלמידה:</label>
         <div>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={learningMethods.whatsapp}
               onChange={() => handleCheckboxChange('learningMethods', 'zoom')}
             />
             זום
           </label>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={learningMethods.phone}
               onChange={() => handleCheckboxChange('learningMethods', 'phone')}
             />
             טלפון
           </label>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={learningMethods.frontal}
               onChange={() => handleCheckboxChange('learningMethods', 'frontal')}
             />
             פרונטלי
           </label>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={learningMethods.other}
               onChange={() => handleCheckboxChange('learningMethods', 'other')}
             />
@@ -221,24 +218,21 @@ const FilterComponent = ({ onFilter }) => {
         <label>וותק בהוראה:</label>
         <div>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={experience.under5}
               onChange={() => handleCheckboxChange('experience', 'under5')}
             />
             מתחת ל-5 שנים
           </label>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={experience.from5to10}
               onChange={() => handleCheckboxChange('experience', 'from5to10')}
             />
             בין 5 ל-10 שנים
           </label>
           <label>
-            <input
-              type="checkbox"
+            <Checkbox
               checked={experience.over10}
               onChange={() => handleCheckboxChange('experience', 'over10')}
             />
@@ -246,8 +240,7 @@ const FilterComponent = ({ onFilter }) => {
           </label>
         </div>
       </div>
-            <button onClick={handleFilterChange}>סנן</button>
-    </div>
+
   );
 };
 

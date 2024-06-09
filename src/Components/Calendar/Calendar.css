@@ -20,7 +20,7 @@
 }
 
 .calendar-table th {
-  background-color: #1f8be920;
+  background-color: #1f8be94e;
 }
 
 .calendar-table td div {
@@ -49,5 +49,60 @@
   border: 1px solid #000; 
 }
 .y{
-  background-color : #f8b3b3f8;
+  /* background-color : #f8b3b3f8; */
+    color:#d4b5f1;
+    text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.7),
+        -1px -1px 2px rgba(0, 0, 0, 0.7); /* מסגרת מורכבת עם שני צללים */
+      padding: 10px;
+      border-radius: 5px; /* פינות מעוגלות */
+      text-align: center; /* טקסט במרכז */
+      background: linear-gradient(135deg, #00bfff, #1e90ff, #4169e1, #3737a5); /* גרדיאנט כחלחל משתנה */
+
 }
+/* .popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  
+}
+
+.popup.show {
+  display: block;
+} */
+.popupBack{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.605);
+  z-index: 999;
+}
+
+
+.popup, .popupp {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+.popup h2, .popupp h2 {
+  margin-top: 0;
+}
+
+.popup button, .popupp button {
+  margin-top: 10px;}

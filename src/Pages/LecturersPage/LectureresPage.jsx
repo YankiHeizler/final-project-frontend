@@ -15,6 +15,7 @@ const LecturersByLanguage = () => {
   useEffect(() => {
     const fetchLecturers = async () => {
       try {
+        // כדאי לייבא את הכתובת מהקובץ URLS
         const response = await axios.get(`http://localhost:3008/api/lectors?lecLangs=${language}`);
         const fetchedLecturers = response.data.lectors || [];
         setLecturers(fetchedLecturers);

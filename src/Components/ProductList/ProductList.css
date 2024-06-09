@@ -20,8 +20,10 @@
   margin: 16px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #648eab;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 5px solid purple;
+  font-weight: bold;
+  background-color: #d9dbc9a1;
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
 }
 
 .language-card:hover {
@@ -56,7 +58,7 @@
 }
 
 .language-card button {
-  background-color: #0091ff;
+  background-color: #adbee6d9;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -67,7 +69,7 @@
 }
 
 .language-card button:hover {
-  background-color: #1e00ff;
+  /* background-color: #1e00ff; */
   transform: translateY(-2px);
 }
 
