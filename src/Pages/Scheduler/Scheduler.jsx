@@ -307,6 +307,8 @@ function Schedulerr( {tokenID} ) {
     setLoadingConnection(true);
     const data = await getConnectionSchedule(connection._id);
     console.log(connection._id);
+    console.log(connection);
+
     setDisplayedSchedule(data);
     setIsLecture(true);
     setLoadingConnection(false);
