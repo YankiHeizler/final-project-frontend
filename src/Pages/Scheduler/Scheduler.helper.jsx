@@ -25,9 +25,17 @@ import axios from "axios";
     console.error(error)
   }
 }
-export async function  getConnectionSchedule(id) {
+export async function  getConnectionSchedule(id){
   try {
-    const res = await axios.get('http://localhost:3008/api/studentLessTimeTable/'+id,{withCredentials:true});
+    const idOfConnection = id
+
+    // const res = await axios({
+    //   method:'get',
+    //   url:'http://localhost:3008/api/studentLessTimeTable/'+id,
+    //   data:{UserFirstDate:new Date()},
+    //   headers:{withCredentials:true}
+    // })
+       const res = await axios.get('http://localhost:3008/api/studentLessTimeTable/'+id,{withCredentials:true});
     // const res = await axios.get('http://localhost:3008/api/studentTimeTable',{headers:{'cookie':`${xtoken}`}});
     // const res = await axios.get('http://localhost:3008/api/studentTimeTable');
 
