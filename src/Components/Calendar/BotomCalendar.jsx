@@ -45,7 +45,7 @@
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import React, { useState } from 'react';
-const PopupComponent = () => {
+const PopupComponent = ({onDateChanged}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedDate, setSelectedDate] = React.useState(null);
 
@@ -54,6 +54,9 @@ const PopupComponent = () => {
   };
 
   const handleDateChange = (date) => {
+    if(typeof onDateChanged === 'function'){
+      onDateChanged(date);
+    }
     setSelectedDate(date);
   };
 

@@ -254,9 +254,15 @@ function Schedulerr( {tokenID} ) {
   const [loadingMySchedule, setLoadingMySchedule] = useState(false);
   const [loadingConnection, setLoadingConnection] = useState(false);
   const [ConnectionSchedule, setConnectionSchedule] = useState({})
+  const [date, setDate] = useState(new Date());
+
 
   const [connectionId, setConnectionId] = useState(null)
   console.log(currentScheduleStu);
+  if (connections && connections.connectionStudLec) {
+    console.log(connections.connectionStudLec[0]?._id);
+  }
+  
   // פונקציה לאחזור לוח זמנים של קשרים מהשרת
   // const fetchConnectionSchedule = async () => {
   //   const data = await getConnectionSchedule()
@@ -304,9 +310,9 @@ function Schedulerr( {tokenID} ) {
   }  
   
   // פונקציה לטיפול בלחיצה על קשר מסוים, מציגה את לוח הזמנים של הקשר הנבחר
-  const handleConnectionsClick = async (connection) => {
+  const handleConnectionsClick = async (connection, date  = new Date()) => {
     setLoadingConnection(true);
-    const data = await getConnectionSchedule(connection._id);
+    const data = await getConnectionSchedule(connection._id, date);
     console.log(connection._id);
     console.log(connection);
     setConnectionSchedule(data)
@@ -314,7 +320,7 @@ function Schedulerr( {tokenID} ) {
     setDisplayedSchedule(data);
     setIsLecture(true);
     setLoadingConnection(false);
-    console.log(data._id);
+    console.log(data);
     setConnectionId(connection._id)
   };
 
@@ -340,13 +346,15 @@ function Schedulerr( {tokenID} ) {
           <>
             <Calendar isLecture={isLecture} schedule={displayedSchedule} connectionForId={connectionId} />
             <div className="lecturers-list">
-              <PopupComponent />
+              <PopupComponent 
+                onDateChanged={(date)=>setDate(date)}
+              />
               <h2>My Conections</h2>
               <h3 key={tokenID} className="button-like" onClick={() => handleMyScheduleClick()}>my schedule</h3>
               {connections && connections.connectionStudLec && (
                 <ul>
                     {connections?.connectionStudLec?.map((connection, index) => (
-                    <li key={index} onClick={() => handleConnectionsClick(connection)}>
+                    <li key={index} onClick={() => handleConnectionsClick(connection, date)}>
                       {connection?.lecID?.lecFName} {connection?.lecID?.lecLName} :{connection?.connLang}
                     </li>
                   ))}

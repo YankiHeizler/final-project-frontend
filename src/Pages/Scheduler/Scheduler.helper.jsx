@@ -26,18 +26,18 @@ export async function getConecshen() {
     console.error(error)
   }
 }
-export async function getConnectionSchedule(id) {
+export async function getConnectionSchedule(id, date) {
   try {
     const idOfConnection = id
-    const d = '2024-06-23'
+
     // const res = await axios({
     //   method:'get',
     //   url:'http://localhost:3008/api/studentLessTimeTable/'+id,
     //   data:{UserFirstDate:new Date()},
     //   headers:{withCredentials:true}
     // })
-    console.log(id);
-    const res = await axios.get('http://localhost:3008/api/studentLessTimeTable/' + id, { withCredentials: true });
+
+    const res = await axios.get(`http://localhost:3008/api/studentLessTimeTable/${id}/${date.toISOString()}`, { withCredentials: true });
     // const res = await axios.get('http://localhost:3008/api/studentTimeTable',{headers:{'cookie':`${xtoken}`}});
     // const res = await axios.get('http://localhost:3008/api/studentTimeTable');
 
