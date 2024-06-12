@@ -683,9 +683,9 @@
 
 
 
-
+// import {Schedulerr} from '../../Pages/Scheduler/Scheduler.jsx';
 import axios from "axios";
-import { postSetLesson } from "../../Pages/Scheduler/Scheduler.helper";
+import { postSetLesson,getStudentData } from "../../Pages/Scheduler/Scheduler.helper";
 import React, { useState } from "react";
 import "./Calendar.css"; // ייבוא קובץ CSS לעיצוב בסיסי
 
@@ -695,8 +695,7 @@ const Calendar = ({ schedule, isLecture, connectionForId }) => {
   const [currentLesson, setCurrentLesson] = useState(null);
   const [message, setMessage] = useState(""); // הוספת מצב להודעה
   const [lessonData, setLessonData] = useState({});
-  const [lectureMessage, setLectureMessage] = useState('');
-
+  const [studentMessage, setStudentMessage] = useState('');
   const handleOpenPopupAv = (lesson) => {
     if (!isLecture) return;
     setCurrentLesson(lesson);
@@ -719,19 +718,29 @@ const Calendar = ({ schedule, isLecture, connectionForId }) => {
 
     const data = {
       lessID: lessonData.lesson.lessID,
-      lessMessage: lectureMessage
+      lessMessage: studentMessage
     };
-    console.log(data.lessID);
+    console.log(data);
     console.log(data.lessMessage);
-
+   
+    async function putmessage(data) {
+      try {
+        const res = await axios.put(`http://localhost:3008/api/lessonsStudLec/${data.lessID}`, { withCredentials: true });
+        lessMessage: studentMessage
+        return res.data;
+      } catch (error) {
+        console.error(error);
+      }
+    }
     // TODO: Send PUT request with the message
   };
+  
 
   const handleClosePopupBocd = () => {
     setShowPopupBocd(false);
   };
 
-  const addLesson = () => {
+  const addLesson = async () => {
     if (!connectionForId || !currentLesson) return;
     postSetLesson(
       currentLesson.hour,
@@ -740,6 +749,7 @@ const Calendar = ({ schedule, isLecture, connectionForId }) => {
       connectionForId
     );
     handleClosePopupAv();
+    
   };
 
   const lessonClick = (lesson, dayIndex) => {
@@ -758,6 +768,7 @@ const Calendar = ({ schedule, isLecture, connectionForId }) => {
     } catch (error) {
       console.error('Error deleting lesson:', error);
     }
+    handleClosePopupBocd()
   };
 
   async function deleteLess(lessID) {
@@ -836,16 +847,18 @@ const Calendar = ({ schedule, isLecture, connectionForId }) => {
 
       {showPopupBocd && isLecture && (
         <div className="popupBack">
-          <div className="popupp">
-            <h2>לפרטים</h2>
+          <div className="popup">
+            <h2></h2>
             <p>תוכן הפופאפ</p>
             <form onSubmit={handleSendingMessage}>
+              <div className="stack-container">
               <label htmlFor="message">שלח הודעה למרצה</label>
               <textarea
                 id="message"
-                onChange={(e) => setLectureMessage(e.target.value)}
+                onChange={(e) => setStudentMessage(e.target.value)}
               ></textarea>
-              <button>שליחה</button>
+              </div>
+              <button onClick={handleClosePopupBocd} >שליחה</button>
             </form>
             <button onClick={delLesson}>ביטול שיעור</button>
             <button onClick={handleClosePopupBocd}>סגור</button>

@@ -2,9 +2,9 @@
 // import { addLesson } from "../../Components/Calendar/Calendar.jsx"
 import { format } from 'date-fns';
 import axios from "axios";
-export async function getStudentData() {
+export async function getStudentData(date) {
   try {
-    const res = await axios.get('http://localhost:3008/api/studentTimeTable', { withCredentials: true });
+    const res = await axios.get(`http://localhost:3008/api/studentTimeTable/${date.toISOString()}`, { withCredentials: true });
     // const res = await axios.get('http://localhost:3008/api/studentTimeTable',{headers:{'cookie':`${xtoken}`}});
     // const res = await axios.get('http://localhost:3008/api/studentTimeTable');
 

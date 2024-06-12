@@ -184,3 +184,19 @@
     justify-content: center;
     align-items: center;
 }
+
+
+.stack-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ממרכז את האלמנטים אופקית */
+  justify-content: center; /* ממרכז את האלמנטים אנכית */
+  height: 10vh; /* עושה שהמיכל יהיה בגובה כל המסך */
+  gap: 10px; /* רווח בין האלמנטים */
+}
+
+.stack-container > * {
+  width: 100%; /* התאמה לרוחב המיכל */
+  text-align: center; /* ממרכז את הטקסט בתוך האלמנטים */
+}
+
