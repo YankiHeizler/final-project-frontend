@@ -102,7 +102,11 @@ function Login({ fields, func, titel }) {
                 "connBooks": [""]
             }
           };
-          await axios.post('http://localhost:3008/api/connectionStudLec',dataToServer,{withCredentials:true});
+          await axios.post('http://localhost:3008/api/connectionStudLec',JSON.stringify(dataToServer),
+          {headers: {
+            'Content-Type': 'application/json','withCredentials':true
+          }
+          });
         } 
         navigate('/studentarea');
        

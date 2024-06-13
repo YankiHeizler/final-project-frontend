@@ -66,7 +66,8 @@ const LecturerDetailsPage = () => {
     };
     let res = {};
   try{
-      res = await axios.post('http://localhost:3008/api/connectionStudLec',dataToServer,{withCredentials:true});
+      res = await axios.post('http://localhost:3008/api/connectionStudLec',dataToServer        
+      ,{withCredentials:true});
       routeChange('/studentarea');
     }
     catch(error){

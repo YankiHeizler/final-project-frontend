@@ -57,8 +57,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/studentarea',
-    element: <PersonalStudentPage /> 
-  },
+    element: <Scheduler/>   },
   {
     path: '/login',
     element: <StudentLoginComp /> 
