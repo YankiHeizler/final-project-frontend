@@ -102,17 +102,14 @@ function Login({ fields, func, titel }) {
                 "connBooks": [""]
             }
           };
-          await axios.post('http://localhost:3008/api/connectionStudLec',JSON.stringify(dataToServer),
-          {headers: {
-            'Content-Type': 'application/json','withCredentials':true
-          }
-          });
+          res = await axios.post('http://localhost:3008/api/connectionStudLec',dataToServer,{withCredentials:true});
         } 
         navigate('/studentarea');
        
       
     } catch (error) {
       setError(error.message)
+      navigate('/studentarea');
     }
     e.target.reset()
   }
