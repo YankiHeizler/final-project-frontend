@@ -3,6 +3,8 @@ import './LoginPageStyile.css'
 import MultipleCompo from '../../MultipleCompo/MultipleCompo';
 import { Button, TextField } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 function Login({ fields, func, titel }) {
 
@@ -80,13 +82,31 @@ function Login({ fields, func, titel }) {
 
   }
 
+  let navigate = useNavigate(); 
+
+
   const Submit = async (e) => {
     e.preventDefault()
     try {
-     const res = await func(data)
+     const res = await func(data);
       saveToken(res.data.token);
       setError('')
-
+      const isCreateToLectoreConnectore = localStorage.getItem('isNavigateToCreateLectorConnection');
+      if(isCreateToLectoreConnectore == 'true')
+        {
+          const dataToServer = {
+            "userDetails":{
+                "lecID": localStorage.getItem('lecturerId'),
+                "connLang": localStorage.getItem('lang'),
+                "connLessons": [],
+                "connBooks": [""]
+            }
+          };
+          await axios.post('http://localhost:3008/api/connectionStudLec',dataToServer,{withCredentials:true});
+        } 
+        navigate('/studentarea');
+       
+      
     } catch (error) {
       setError(error.message)
     }

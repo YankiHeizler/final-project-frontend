@@ -45,6 +45,25 @@ export async function  getConnectionSchedule(id){
   }
 }
 
+export async function  createConnectionSchedule(id,langId){
+  // try {
+    const dataToServer = {
+      "userDetails":{
+          "lecID": id,
+          "connLang": langId,
+          "connLessons": [],
+          "connBooks": [""]
+      }
+    };
+
+    const res = await axios.post('http://localhost:3008/api/connectionStudLec',dataToServer,{withCredentials:true});
+
+    return res?.data;
+  // } catch (error) {
+  //   console.error(error)
+  // }
+}
+
 
 // export async function  getLecData() {
 //   try {
