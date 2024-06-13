@@ -1,8 +1,17 @@
 
 import { Link } from 'react-router-dom';
 import './ProductList.css';
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
+
+  let navigate = useNavigate(); 
+
+  const navigateToProduct = (lang) =>{ 
+    localStorage.setItem('lang', lang)
+    navigate(`/product/${lang}`);
+  };
+
   return (
     <div className="language-card">
       <div className="language-details">
@@ -10,8 +19,8 @@ const ProductCard = ({ product }) => {
         <h2 className="lecturer-description">{product.langPres}</h2>
       </div>
       <div className="language-footer">
-        <button>
-          <Link to={`/product/${product.lang}`}>לרשימת מרצים</Link>
+        <button onClick={() => {navigateToProduct(product.lang)}}>
+        לרשימת מרצים
         </button>
       </div>
     </div>

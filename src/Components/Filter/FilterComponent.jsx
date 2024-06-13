@@ -240,7 +240,11 @@ const FilterComponent = ({ onFilter }) => {
           </label>
         </div>
       </div>
-
+     
+      </div>
+      </Paper>
+      </Fade>
+  </>
   );
 };
 
