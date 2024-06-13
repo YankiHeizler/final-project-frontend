@@ -58,7 +58,7 @@ export async function  createConnectionSchedule(id,langId){
       }
     };
 
-    const res = await axios.post('http://localhost:3008/api/connectionStudLec',dataToServer,{withCredentials:true});
+    const res = await axios.post('http://localhost:3008/api/connectionStudLec',JSON.stringify(dataToServer),{withCredentials:true});
 
     return res?.data;
   // } catch (error) {
