@@ -102,17 +102,23 @@ function Login({ fields, func, titel }) {
                 "connBooks": [""]
             }
           };
-          await axios.post('http://localhost:3008/api/connectionStudLec',JSON.stringify(dataToServer),
-          {headers: {
-            'Content-Type': 'application/json','withCredentials':true
-          }
-          });
+          res = await axios.post('http://localhost:3008/api/connectionStudLec',dataToServer,{withCredentials:true});
         } 
         navigate('/studentarea');
        
       
     } catch (error) {
       setError(error.message)
+      if(error.code == "ERR_BAD_REQUEST")
+        {
+          localStorage.setItem('isNavigateToCreateLectorConnection', 'true');
+          localStorage.setItem('lecturerId', lecturerId);
+          routeChange('/login');
+        }
+        else if(error.response.data.message == "connectionStudLec already in the database")
+          {
+            navigate('/studentarea');
+          }
     }
     e.target.reset()
   }
