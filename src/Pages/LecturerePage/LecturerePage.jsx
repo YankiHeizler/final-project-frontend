@@ -77,7 +77,7 @@ const LecturerDetailsPage = () => {
           localStorage.setItem('lecturerId', lecturerId);
           routeChange('/login');
         }
-        else if(error.code == "connectionStudLec already in the database")
+        else if(error.response.data.message == "connectionStudLec already in the database")
           {
             navigate('/studentarea');
           }

@@ -109,7 +109,16 @@ function Login({ fields, func, titel }) {
       
     } catch (error) {
       setError(error.message)
-      navigate('/studentarea');
+      if(error.code == "ERR_BAD_REQUEST")
+        {
+          localStorage.setItem('isNavigateToCreateLectorConnection', 'true');
+          localStorage.setItem('lecturerId', lecturerId);
+          routeChange('/login');
+        }
+        else if(error.response.data.message == "connectionStudLec already in the database")
+          {
+            navigate('/studentarea');
+          }
     }
     e.target.reset()
   }
