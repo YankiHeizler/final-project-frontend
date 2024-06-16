@@ -20,7 +20,7 @@ import LecturerDetails from './Pages/LecturerePage/LecturerePage.jsx'
 import LecturerDetailsPage from './Pages/LecturerePage/LecturerePage.jsx'
 import AboutPage  from './Components/About/About.jsx'
 import PersonalStudentPage from './Pages/PersonalStudentPage/PersonalStudentPage.jsx'
-
+import ScheduleLec from './Pages/Scheduler/SchedulerLec.jsx'
 
 
 const router = createBrowserRouter([
@@ -76,6 +76,9 @@ const router = createBrowserRouter([
   { path: '/scheduler',
   element: <Scheduler/> 
   },
+  { path: '/schedulerlec',
+    element: <ScheduleLec/> 
+    },
   {
     path: '/lecturer-enrollment',
     element: <RegistrationPageLect /> 

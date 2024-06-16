@@ -118,6 +118,7 @@ const Calendar = ({ schedule, isLecture, connectionForId }) => {
             <tr className="y">
               
               {schedule?.dates?.map((date, index) => {
+                {console.log(schedule);}
                 const days_of_the_week =['Sunday','Monday','Tuesday','Wednesday','Thursday']
                 return(
                 <th key={index}>{days_of_the_week[index]}{<span>&nbsp;</span> }{date}</th>);
@@ -136,7 +137,7 @@ const Calendar = ({ schedule, isLecture, connectionForId }) => {
                     >
                       <div className="x">
                         <div>{lesson?.hour ? lesson.hour : <span>&nbsp;</span>}</div>
-                        <div>{lesson?.status ? lesson.status : <span>&nbsp;</span>}</div>
+                        {/* <div>{lesson?.status ? lesson.status : <span>&nbsp;</span>}</div> */}
                         <div>{lesson?.connLang ? lesson.connLang : <span>&nbsp;</span>}</div>
                         <div>{lesson?.lecName ? lesson.lecName : <span>&nbsp;</span>}</div>
                         {lesson?.status === 'available' &&

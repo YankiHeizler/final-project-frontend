@@ -23,7 +23,7 @@ const HeaderComp = () => {
 
       <Stack spacing={2} direction="row" sx={{
          width: '100%' ,borderBottom: 1, borderColor: 'divider' ,color:"#2e2e55",fontSize:"20px",justifyContent:"center"}}>
-        <Grid sx={{minWidth:"300px",fontStyle:"bold",borderBottom:"2px #2886ab solid",':hover':{borderBottom:"2px purple solid"}}} columns={3}><Button sx={{fontSize:"22px",fontWeight:"bold"}} onClick={()=>{routeChange('/studentarea')}} variant="איזור אישי תלמיד">איזור אישי תלמיד</Button></Grid>
+        <Grid sx={{minWidth:"300px",fontStyle:"bold",borderBottom:"2px #2886ab solid",':hover':{borderBottom:"2px purple solid"}}} columns={3}><Button sx={{fontSize:"22px",fontWeight:"bold"}} onClick={()=>{routeChange('/scheduler')}} variant="איזור אישי תלמיד">איזור אישי תלמיד</Button></Grid>
         <Grid sx={{minWidth:"300px",fontStyle:"bold",borderBottom:"2px #2886ab solid",':hover':{borderBottom:"2px purple solid"}}} columns={3}><Button sx={{fontSize:"22px",fontWeight:"bold"}} onClick={()=>{routeChange('/login')}} variant="להתחברות/הרשמה">להתחברות/הרשמה</Button></Grid>
         <Grid sx={{minWidth:"300px",fontStyle:"bold",borderBottom:"2px #2886ab solid",':hover':{borderBottom:"2px purple solid"}}} columns={3}><Button sx={{fontSize:"22px",fontWeight:"bold"}} onClick={()=>{routeChange('/About')}} variant="קצת על המערכת שלנו">קצת על המערכת שלנו</Button></Grid>
         <Grid sx={{minWidth:"300px",fontStyle:"bold",borderBottom:"2px #2886ab solid",':hover':{borderBottom:"2px purple solid"}}} columns={3}><Button sx={{fontSize:"22px",fontWeight:"bold"}} onClick={()=>{routeChange('/')}} variant="דף הבית">דף הבית</Button></Grid>
