@@ -1,0 +1,60 @@
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .calendar-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .calendar-table th,
+  .calendar-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .calendar-table th {
+    background-color: #1f8be94e;
+  }
+  
+  .calendar-table td div {
+    margin: 5px 0;
+  }
+  
+  
+  
+   
+  .text-box {
+      width: 100px; /* הגדרת רוחב המשבצת */
+      white-space: nowrap; /* מונע שבירת שורות */
+      overflow: hidden; /* חותך תוכן שיוצא מחוץ לגבולות המשבצת */
+      text-overflow: ellipsis; /* מציג "..." במקום הטקסט הנחתך */
+      border: 1px solid #000; /* מסגרת למשבצת */
+      padding: 10px; /* ריווח פנימי למשבצת */
+  }
+  .text-box:hover {
+    overflow: visible; /* מציג את כל הטקסט */
+    white-space: normal; /* מאפשר שבירת שורות */
+    background: #f0f0f0; /* רקע שונה על מנת להבדיל את הטקסט המלא */
+    position: absolute; /* מיקם את המשבצת מעל כל תוכן אחר */
+    z-index: 1; /* הבטחת שהמשבצת תהיה מעל כל תוכן אחר */
+  }
+  .x{
+    border: 1px solid #000; 
+  }
+  .y{
+    /* background-color : #f8b3b3f8; */
+      color:#d4b5f1;
+      text-shadow: 
+          1px 1px 2px rgba(0, 0, 0, 0.7),
+          -1px -1px 2px rgba(0, 0, 0, 0.7); /* מסגרת מורכבת עם שני צללים */
+        padding: 10px;
+        border-radius: 5px; /* פינות מעוגלות */
+        text-align: center; /* טקסט במרכז */
+        background: linear-gradient(135deg, #00bfff, #1e90ff, #4169e1, #3737a5); /* גרדיאנט כחלחל משתנה */
+  
+  }
