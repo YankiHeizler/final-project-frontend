@@ -7,9 +7,7 @@ import { useEffect, useState } from "react";
 import HeaderComp from '../../Components/Header/HeaderComp.jsx';
 import "./Scheduler.css";
 
-// פונקציה שמקבלת קומפוננטות ומציגה על הדף
 function Schedulerr( {tokenID} ) {
-  // שימוש ב-useState לאחסון נתונים מקומיים של הקומפוננטה
   const [currentScheduleStu, setCurrentScheduleStu] = useState({});
   const [displayedSchedule, setDisplayedSchedule] = useState({});
   const [isLecture, setIsLecture] = useState(false);
@@ -20,7 +18,10 @@ function Schedulerr( {tokenID} ) {
   const [ConnectionSchedule, setConnectionSchedule] = useState({})
   const [date, setDate] = useState(new Date());
 
-  setLoadingMySchedule
+  
+
+
+  // setLoadingMySchedule
   const [connectionId, setConnectionId] = useState(null)
   console.log(currentScheduleStu);
   if (connections && connections.connectionStudLec) {
@@ -79,8 +80,7 @@ function Schedulerr( {tokenID} ) {
     setLoadingMySchedule(true);
     setLoadingConnection(true);
     const data = await getConnectionSchedule(connection._id, date);
-    console.log(connection._id);
-    console.log(connection);
+    
     setConnectionSchedule(data)
     console.log(data);
     setDisplayedSchedule(data);
@@ -121,6 +121,7 @@ function Schedulerr( {tokenID} ) {
                 onDateChanged={(date)=>setDate(date)}
               />
               <h2>My Conections</h2>
+               {console.log(tokenID)}
               <h3 key={tokenID} className="button-like" onClick={() => handleMyScheduleClick(date)}>my schedule</h3>
               {connections && connections.connectionStudLec && (
                 <ul>
