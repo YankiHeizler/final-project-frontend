@@ -88,7 +88,7 @@ function Login({ fields, func, titel }) {
   const Submit = async (e) => {
     e.preventDefault()
     try {
-     const res = await func(data);
+     let res = await func(data);
       saveToken(res.data.token);
       setError('')
       const isCreateToLectoreConnectore = localStorage.getItem('isNavigateToCreateLectorConnection');
@@ -159,8 +159,9 @@ function Login({ fields, func, titel }) {
                       </select>
                       ) :
                       pra.type=="checkbox" ?
-                      (<Checkbox id={`${pra.name}-${index}`} name={pra.name} required={pra.required} onChange={handleChange} />) :
-                      (<TextField fullWidth label={pra.name} variant="outlined" id={`${pra.name}-${index}`} name={pra.name} type={pra.type} required={pra.required} onChange={handleChange} />
+                      (<Checkbox id={`${pra.name}-${index}`} name={pra.name} required={pra.required} onChange={handleChange} />) 
+                      :
+                      (<TextField fullWidth label={pra.titel} variant="outlined" id={`${pra.name}-${index}`} name={pra.name} type={pra.type} required={pra.required} onChange={handleChange} autoComplete ="off" />
                       )}
                     </div>
 
