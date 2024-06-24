@@ -92,7 +92,7 @@ const LecturerDetailsPage = () => {
       <div className="lecturer-card" >
         
         <div className="lecturer-details">
-        <img src="{product.lecFoto}" alt="photo" />
+        <img src={lecturer.imageUrl || '/images/images.jpeg'} alt="Lecturer"/>
           <h3>{lecturer.lecFName}</h3>
           <h3>{lecturer.lecLName}</h3>
           <h3>{lecturer.lecSex}</h3>
