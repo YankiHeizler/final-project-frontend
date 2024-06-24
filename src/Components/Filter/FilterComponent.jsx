@@ -240,7 +240,7 @@ const FilterComponent = ({ onFilter }) => {
           </label>
         </div>
       </div>
-     
+      <button onClick={handleFilterChange}>סנן</button>
       </div>
       </Paper>
       </Fade>

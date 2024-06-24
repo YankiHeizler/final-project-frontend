@@ -96,6 +96,10 @@ const LecturerDetailsPage = () => {
           <h3>{lecturer.lecFName}</h3>
           <h3>{lecturer.lecLName}</h3>
           <h3>{lecturer.lecSex}</h3>
+          <h3>רמת לימוד: {lecturer.lecStudyLevels}</h3>
+          <h3>שפות: {lecturer.langs}</h3>
+          <h3>טלפון: {lecturer.lecPhone}</h3>
+          <h3> {lecturer.lecEmail}</h3>
           <h3>השכלה: {lecturer.lecEduc}</h3>
           <h3>שפת אם: {lecturer.lecMotherLang}</h3>
           <h3>תעריף: {lecturer.lecRate} ש"ח</h3>
