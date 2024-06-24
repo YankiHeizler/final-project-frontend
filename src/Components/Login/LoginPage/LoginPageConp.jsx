@@ -30,9 +30,9 @@ function Login({ fields, func, titel }) {
     (type && type == 'checkbox') ?
 
       newData[name] = checked : newData[name] = value
-    console.log(checked);
+    // console.log(checked);
     setData(newData);
-    console.log(newData);
+    // console.log(newData);
   };
 
   const multipleOnChange = (event) => {
@@ -50,7 +50,7 @@ function Login({ fields, func, titel }) {
       newData[name] = newData[name].filter((opt) => opt !== value);
     }
     setData(newData);
-    console.log(newData);
+    // console.log(newData);
 
 
   }
@@ -76,7 +76,7 @@ function Login({ fields, func, titel }) {
       theDay.workinghours = theDay.workinghours.filter((opt) => opt !== value);
     }
     setData(newData);
-    console.log(data);
+    // console.log(data);
     // console.log(newData.lecTimeTable);
 
 
@@ -113,7 +113,8 @@ function Login({ fields, func, titel }) {
        
       
     } catch (error) {
-      setError(error.message)
+      console.log(error.response.status)
+      setError(error)
       if(error.code == "ERR_BAD_REQUEST")
         {
           localStorage.setItem('isNavigateToCreateLectorConnection', 'true');
@@ -173,7 +174,11 @@ function Login({ fields, func, titel }) {
                   <br/>
               <Button variant="contained" type="submit">שלח</Button>
             </form>
-        { error && <div>error:{error}</div>}
+            {error && (error.response.status === 500 ? <div className="error-message">
+      <p>המשתמש לא נמצא במערכת.</p>
+      <p>במידה והינך משתמש רשום, בדוק את הפרטים שלך והקפד לסמן אם הינך מרצה במקום המתאים.</p>
+      <p>במידה ואינך רשום, צור משתמש חדש .</p>
+    </div> : <div>300</div>)}
 
       </div>
 
