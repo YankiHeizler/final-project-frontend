@@ -1,80 +1,95 @@
+.header-container {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  width: 100%; 
+  background: linear-gradient(135deg, #00bfff, #1e90ff, #4169e1, #00008b); /* גרדיאנט כחלחל משתנה */
+  padding: 20px 0; 
+}
 
-  .header-container {
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    width: 100%; 
-    background-color: #2886ab;
-    padding: 20px 0; 
-  }
-  
-  .header-container nav {
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    width: 80%; 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    flex-wrap: nowrap; 
-  }
-  
-  .header-container nav button {
-    background-color: rgb(246, 94, 94); 
-    padding: 5px 10px; 
-    border: 2px solid #000; 
-    border-radius: 5px;
-    cursor: pointer; 
-    margin: 5px; 
-    transition: background-color 0.3s ease; 
-    font-size: 14px; 
-  }
-  
-  .header-container nav button:hover {
-    background-color: purple; 
-  }
-  
-  .header-container nav .link {
-    color: #333; 
-    text-decoration: none; 
-    transition: color 0.3s ease; 
-  }
-  
-  .header-container nav .link:hover {
-    color: rgb(43, 15, 114); 
-  }
-  
+.header-container nav {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  width: 80%; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  flex-wrap: nowrap; 
+}
+
+.header-container .link {
+  background-color: #327be095; /* צבע רקע חלקי חסר חשבון */
+  padding: 10px 20px; 
+  cursor: pointer; 
+  margin: 10px; 
+  transition: color 0.3s ease, border-bottom 0.3s ease; 
+  font-size: 18px; /* גודל גופן מוגדל */
+  font-weight: bold; /* גופן מודגש */
+  color: rgb(29, 29, 138); /* צבע טקסט לבן */
+  display: flex; /* שימוש ב-Flexbox */
+  align-items: center; /* יישור אנכי למרכז */
+  border-bottom: 2px solid transparent;
+}
+
+.header-container .link:hover {
+  color: purple; 
+  border-bottom: 2px solid purple;
+}
+
+.header-container .heading {
+  font-size: 50px;
+  font-weight: bold;
+  margin: 5px 0; 
+  color: rgb(53, 53, 209); /* צבע טקסט כחול */
+  text-align: center; 
+  border: none; /* מסגרת זהב */
+  padding: 0; /* ריווח פנימי למסגרת */
+  display: inline-block; /* לשמור על רוחב התוכן */
+}
+
+.header-container .logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px; /* גודל גדול יותר */
+  height: 130px; /* גודל גדול יותר */
+  margin: 10px 0; 
+  background: linear-gradient(to bottom, #000000, #000080, #0000FF); /* גרדיאנט משחור לכחול */
+  border-radius: 10px; /* פינות מעוגלות */
+  padding: 5px; /* ריווח בין התמונה לגבול */
+}
+
+.header-container .logo {
+  width: 240px; /* גודל גדול יותר */
+  height: 120px; /* גודל גדול יותר */
+  margin-right: 10px; /* ריווח מימין */
+}
+
+@media (max-width: 600px) {
   .header-container .heading {
-    font-size: 50px;
-    font-weight: bold;
-    margin: 5px 0; 
-    color: white; 
-    text-align: center; 
+    font-size: 36px;
   }
-  
-  .header-container .logo {
-    width: 130px; 
-    height: 85px; 
-    margin: 10px 0; 
-  }
-  
 
-  @media (max-width: 600px) {
-    .header-container .heading {
-      font-size: 36px;
-    }
-  
-    .header-container nav {
-      flex-direction: column; 
-    }
-  
-    .header-container nav button {
-      padding: 5px 8px; 
-      font-size: 12px; 
-      width: 100%; 
-    }
-  
-    .header-container .logo {
-      width: 100px; 
-    }
+  .header-container nav {
+    flex-direction: column; 
   }
+
+  .header-container .link {
+    padding: 8px 16px; 
+    font-size: 16px; 
+    width: 100%; 
+  }
+
+  .header-container .logo-container {
+    width: 250px; 
+    height: 140px; 
+  }
+
+  .header-container .logo {
+    width: 240px; /* גודל גדול יותר */
+    height: 150px; /* גודל גדול יותר */
+  }
+}
+
+

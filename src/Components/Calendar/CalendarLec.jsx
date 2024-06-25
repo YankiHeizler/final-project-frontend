@@ -127,7 +127,21 @@ const CalendarLecc = ({ scheduleLec, isLec, connectionLecId, specificConnection 
                           <h1>פנוי</h1>
                         }
                         {lesson?.status === 'scheduled' &&
-                          <button onClick={() => lessonClick(lesson, dayIndex)}><p>{specificConnection?.studID.studFName ? specificConnection.studID.studFName + " " + specificConnection.studID.studLName : <span>&nbsp;</span>}</p> {specificConnection.connLang} </button>
+                          <button onClick={() => lessonClick(lesson, dayIndex)}>
+                          <p>
+                            {specificConnection ? (
+                             specificConnection.studID ? (
+                                specificConnection.studID.studFName + " " + specificConnection.studID.studLName
+                              ) : (
+                                <span>&nbsp;</span>
+                              )
+                            ) : (
+                              <span>&nbsp;</span>
+                            )}
+                          </p>
+                          {specificConnection && specificConnection.connLang}
+                        </button>
+                        
                         }
                       </div>
                     </td>

@@ -9,7 +9,7 @@ import CalendarLecc from '../../Components/Calendar/CalendarLec.jsx';
 
 function ScheduleLec({ tokenID }) {
     const [currentScheduleLecStu, setCurrentScheduleLecStu] = useState({});
-    const [connectionsScheduleLec,setConnectionsScheduleLec] = useState({})
+    const [connectionsScheduleLec, setConnectionsScheduleLec] = useState({})
     const [connectionsLec, setConnectionsLec] = useState(null);
     const [loginLecScheduleLe, setLoginLecScheduleLe] = useState(false);
     const [loginMyconection, setLoginMyconection] = useState(false);
@@ -17,47 +17,33 @@ function ScheduleLec({ tokenID }) {
     const [conecshenLec, setConecshenLec] = useState(null);
     const [date, setDate] = useState(new Date());
     const [connectionLecId, setConnectionLecId] = useState(null);
-    const [specificConnection, setSpecificConnection] = useState(null);
-    
-
-    console.log(conecshenLec);
-    console.log(tokenID);
-    console.log("11111111111111111111111111");
+    const [specificConnection, setSpecificConnection] = useState({});
+    const [Change_color_for_connect_button, set_Change_color_for_connect_button] = useState(null);
 
     async function getConnectionScheduleLec(connectionLecId, date) {
         try {
-            console.log(connectionLecId);
-            const idOfConnection = connectionLecId
             const res = await axios.get(`http://localhost:3008/api/lecLessTimeTable/${connectionLecId}/${date.toISOString()}`, { withCredentials: true });
-            // const res = await axios.get('http://localhost:3008/api/studentTimeTable',{headers:{'cookie':`${xtoken}`}});
-            // const res = await axios.get('http://localhost:3008/api/studentTimeTable');
-
-            return res.data
+            return res.data;
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
     }
 
     const fetchConnectionScheduleLec = async (connectionLecId, date) => {
         const data = await getConnectionScheduleLec(connectionLecId, date);
         if (data?.status === 'success') {
-            // setConnectionsLec(data);
             setConnectionsScheduleLec(data);
             setCurrentScheduleLecStu(data);
             console.log(data);
         }
     }
 
-
     async function getConecshenLec() {
         try {
             const res = await axios.get('http://localhost:3008/api/connectionStudLec', { withCredentials: true });
-            // const res = await axios.get('http://localhost:3008/api/studentTimeTable',{headers:{'cookie':`${xtoken}`}});
-            // const res = await axios.get('http://localhost:3008/api/studentTimeTable');
-
-            return res.data
+            return res.data;
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
     }
 
@@ -81,16 +67,16 @@ function ScheduleLec({ tokenID }) {
     const fetchLecData = async (date = new Date()) => {
         setLoginLecScheduleLe(true);
         const data = await getLecData(date);
-        console.log(data);
         setCurrentScheduleLecStu(data);
         setLoginLecScheduleLe(false);
     }
 
     const fetchAlll = async (connectionLecId, date) => {
         fetchLecData(date);
-        fetchConnectionsLec()
-        if (connectionLecId && date){
-        fetchConnectionScheduleLec(connectionLecId, date)}
+        fetchConnectionsLec();
+        if (connectionLecId && date) {
+            fetchConnectionScheduleLec(connectionLecId, date);
+        }
     }
 
     useEffect(() => {
@@ -98,62 +84,60 @@ function ScheduleLec({ tokenID }) {
     }, [date]);
 
     const handleMyScheduleClickLec = async (date = new Date()) => {
-        const data = await getLecData(date)
-        console.log(date);
-        console.log(data);
+        const data = await getLecData(date);
         setLoginLecScheduleLe(true);
         setCurrentScheduleLecStu(data);
+        console.log(data);
         setIsLec(false);
         setLoginLecScheduleLe(false);
     };
-    
 
-
-    
-    console.log(conecshenLec);
-    const handleConnectionsLecClick = async (conecshenLec, selectedDate = new Date()) => {
+    const handleConnectionsLecClick = async (connection, date = new Date()) => {
         setLoginMyconection(true);
-        setSpecificConnection(conecshenLec)
-        const data = await getConecshenLec(conecshenLec._id, selectedDate); // Pass selectedDate here
-        console.log(conecshenLec._id);
-        console.log(conecshenLec);
-        console.log(selectedDate);
-
-        fetchConnectionScheduleLec(conecshenLec._id, selectedDate); // Pass selectedDate here
-        setCurrentScheduleLecStu(connectionsScheduleLec);
+        setSpecificConnection(connection);
+        set_Change_color_for_connect_button(connection);
+        await fetchConnectionScheduleLec(connection._id, date);
         setIsLec(true);
-        setConnectionLecId(conecshenLec._id);
+        setConnectionLecId(connection._id);
         setLoginMyconection(false);
     };
-    
-    
+// console.log(conecshenLec.connectionStudLec);
     return (
-        <div className='app'>
+        <div className='appL'>
             <HeaderComp />
-            <div className='main-content'>
+            <div className='main-contentL'>
                 {loginLecScheduleLe || loginMyconection ? (
-                    <div className="spinner"></div>
+                    <div className="spinnerL"></div>
                 ) : (
                     <>
-                        <CalendarLecc scheduleLec={currentScheduleLecStu} isLec={isLec} connectionLecId={connectionLecId}specificConnection={specificConnection} />
-                        {console.log(currentScheduleLecStu)}{console.log(isLec)}{console.log(connectionLecId)}
-                        <div className="lecturers-list">
-                            <PopupComponent
-                                onDateChanged={(date) => setDate(date)}
-                            />
-                            <h2>My Conections</h2>
-                            <h3 key={tokenID} className="button-like" onClick={() => handleMyScheduleClickLec(date)}>my schedule</h3>
+                        <div className='calendar-containerL'>
+                            <CalendarLecc scheduleLec={currentScheduleLecStu} isLec={isLec} connectionLecId={connectionLecId} specificConnection={specificConnection} />
+                        </div>
+                        <div className="lecturers-listL">
+                            <PopupComponent onDateChanged={(date) => setDate(date)} />
+                            <h2>My Connections</h2>
+                            <h3 key={tokenID} className="button-likeL" onClick={() => handleMyScheduleClickLec(date)}>My Schedule</h3>
                             {conecshenLec && conecshenLec.connectionStudLec && (
-                                <ul>
-                                    {conecshenLec?.connectionStudLec?.map((connection, index) => (
-                                        <li key={index} onClick={() => handleConnectionsLecClick(connection, date)}>
-                                            {connection?.studID?.studFName} {connection?.studID?.studLName} :{connection?.connLang}
+                                <ul>{console.log(conecshenLec.connectionStudLec)}
+                                    {conecshenLec.connectionStudLec.map((connection, index) => (
+                                        <li key={index}>
+                                            <div className="flex-itL">
+                                                <div className="Emoji-buttonsL">
+                                                <div className="button-redL" onClick={() => alert('Book')}>📗</div>
+                                                <div className="button-redL" onClick={() => alert('Chat')}>🗨️</div>
+                                                </div>
+                                                <div 
+                                                    className={`connectionButtonL ${Change_color_for_connect_button === connection ? 'selectedL' : ''}`}
+                                                    onClick={() => handleConnectionsLecClick(connection, date)}
+                                                >
+                                                    {connection.studID.studFName} {connection.studID.studLName} : {connection.connLang}
+                                                </div>
+                                            </div>
                                         </li>
-                                    ))}                                    
+                                    ))}
                                 </ul>
                             )}
                         </div>
-
                     </>
                 )}
             </div>
@@ -162,8 +146,3 @@ function ScheduleLec({ tokenID }) {
 }
 
 export default ScheduleLec;
-
-
-
-
-
