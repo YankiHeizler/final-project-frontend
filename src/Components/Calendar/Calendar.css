@@ -1,10 +1,5 @@
 /* src/Calendar.css */
 
-.calendar-container {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-}
 
 .calendar-table {
   border-collapse: collapse;
@@ -200,3 +195,8 @@
   text-align: center; /* ממרכז את הטקסט בתוך האלמנטים */
 }
 
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}

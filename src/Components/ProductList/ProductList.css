@@ -1,83 +1,73 @@
 
 
+/* ProductList.css */
+
+/* עיצוב כללי */
 .language-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
   justify-content: center;
-  margin: 15px;
-  /* background-color: aqua; */
+  padding: 20px;
+  background: linear-gradient(135deg, #00bfff, #1e90ff, #4169e1, #00008b); /* גרדיאנט כחלחל משתנה */
 }
 
 .language-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 500px;
-  height: 600px; 
-  border: 1px solid #cccccc;
-  padding: 16px;
-  margin: 16px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 5px solid purple;
-  font-weight: bold;
-  background-color: #d9dbc9a1;
-  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  width: 300px;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.2s;
+
 }
 
 .language-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
 }
 
 .language-details {
-  max-width: 100%;
-  overflow: hidden;
-  word-wrap: break-word;
-  white-space: normal;
-  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #00bfff, #1e90ff, #4169e1, #00008b);
+  color: rgb(53, 53, 209);
 }
+
+.language-details h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.language-details h2 {
+  margin: 10px 0 0;
+  font-size: 18px;
+  color: #f3f3f3;
+}
+
 
 .language-footer {
-  display: flex;
-  justify-content: center;
-  margin-top: auto; 
-}
-
-.language-card h1 {
-  font-size: 40px;
-  margin: 10px 0;
+  padding: 15px;
+  background-color: #4e8ce195;
 
 }
 
-.language-card h2 {
-  font-size: 20px;
-  margin: 10px 0;
-  color: #555;
-}
-
-.language-card button {
-  background-color: #adbee6d9;
-  color: white;
-  border: none;
+.language-footer button {
   padding: 10px 20px;
-  margin-top: 10px;
+  font-size: 16px;
+  color: rgb(53, 53, 209);
+  background-color: #1e90ff;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s;
 }
 
-.language-card button:hover {
-  /* background-color: #1e00ff; */
-  transform: translateY(-2px);
+.language-footer button:hover {
+  background-color: #4169e1;
 }
 
-.language-card button a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-} 
-
-
-   
+.language-footer button:active {
+  background-color: #00008b;
+  transform: scale(0.95);
+}

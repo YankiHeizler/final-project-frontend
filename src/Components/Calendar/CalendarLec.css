@@ -1,4 +1,9 @@
 /* Calendar.css */
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
 
 /* כללי לפופאפ */
 .popupBack {

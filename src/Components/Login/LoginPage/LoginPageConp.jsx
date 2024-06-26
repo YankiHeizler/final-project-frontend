@@ -104,13 +104,15 @@ function Login({ fields, func, titel }) {
             
           };
           
-          res = await axios.post('http://localhost:3008/api/connectionStudLec',dataToServer,{withCredentials:true});
+        const res = await axios.post('http://localhost:3008/api/connectionStudLec',dataToServer,{withCredentials:true});
         } 
         if (data ["isLecturerurl"] == true)
           navigate('/schedulerLec');
         else
-          navigate('/studentarea');
-       
+//         sragaLecPage
+          navigate('/studentarea')
+
+
       
     } catch (error) {
       console.log(error.response.status)
