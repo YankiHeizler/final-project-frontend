@@ -12,6 +12,7 @@
 }
 
 .language-card {
+
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -20,6 +21,7 @@
   text-align: center;
   overflow: hidden;
   transition: transform 0.2s;
+
 }
 
 .language-card:hover {
@@ -43,9 +45,11 @@
   color: #f3f3f3;
 }
 
+
 .language-footer {
   padding: 15px;
   background-color: #4e8ce195;
+
 }
 
 .language-footer button {

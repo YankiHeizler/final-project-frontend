@@ -30,9 +30,9 @@ function Login({ fields, func, titel }) {
     (type && type == 'checkbox') ?
 
       newData[name] = checked : newData[name] = value
-    console.log(checked);
+    // console.log(checked);
     setData(newData);
-    console.log(newData);
+    // console.log(newData);
   };
 
   const multipleOnChange = (event) => {
@@ -50,7 +50,7 @@ function Login({ fields, func, titel }) {
       newData[name] = newData[name].filter((opt) => opt !== value);
     }
     setData(newData);
-    console.log(newData);
+    // console.log(newData);
 
 
   }
@@ -76,7 +76,7 @@ function Login({ fields, func, titel }) {
       theDay.workinghours = theDay.workinghours.filter((opt) => opt !== value);
     }
     setData(newData);
-    console.log(data);
+    // console.log(data);
     // console.log(newData.lecTimeTable);
 
 
@@ -88,7 +88,7 @@ function Login({ fields, func, titel }) {
   const Submit = async (e) => {
     e.preventDefault()
     try {
-     const res = await func(data);
+     let res = await func(data);
       saveToken(res.data.token);
       setError('')
       const isCreateToLectoreConnectore = localStorage.getItem('isNavigateToCreateLectorConnection');
@@ -109,11 +109,14 @@ function Login({ fields, func, titel }) {
         if (data ["isLecturerurl"] == true)
           navigate('/schedulerLec');
         else
+//         sragaLecPage
           navigate('/studentarea')
-       
+
+
       
     } catch (error) {
-      setError(error.message)
+      console.log(error.response.status)
+      setError(error)
       if(error.code == "ERR_BAD_REQUEST")
         {
           localStorage.setItem('isNavigateToCreateLectorConnection', 'true');
@@ -162,8 +165,9 @@ function Login({ fields, func, titel }) {
                       </select>
                       ) :
                       pra.type=="checkbox" ?
-                      (<Checkbox id={`${pra.name}-${index}`} name={pra.name} required={pra.required} onChange={handleChange} />) :
-                      (<TextField fullWidth label={pra.name} variant="outlined" id={`${pra.name}-${index}`} name={pra.name} type={pra.type} required={pra.required} onChange={handleChange} />
+                      (<Checkbox id={`${pra.name}-${index}`} name={pra.name} required={pra.required} onChange={handleChange} />) 
+                      :
+                      (<TextField fullWidth label={pra.titel} variant="outlined" id={`${pra.name}-${index}`} name={pra.name} type={pra.type} required={pra.required} onChange={handleChange} autoComplete ="off" />
                       )}
                     </div>
 
@@ -172,7 +176,11 @@ function Login({ fields, func, titel }) {
                   <br/>
               <Button variant="contained" type="submit">שלח</Button>
             </form>
-        { error && <div>error:{error}</div>}
+            {error && (error.response.status === 500 ? <div className="error-message">
+      <p>המשתמש לא נמצא במערכת.</p>
+      <p>במידה והינך משתמש רשום, בדוק את הפרטים שלך והקפד לסמן אם הינך מרצה במקום המתאים.</p>
+      <p>במידה ואינך רשום, צור משתמש חדש .</p>
+    </div> : <div>300</div>)}
 
       </div>
 

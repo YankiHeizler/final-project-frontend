@@ -1,4 +1,6 @@
-
+body {
+  font-size: 20px;
+}
   
   .login-modal {
     
@@ -26,3 +28,22 @@
     height: 20px;
     width: 70px;
   }
+
+  .error-message {
+    border: 1px solid #ff0000;
+    background-color: #ffe6e6;
+    color: #ff0000;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .error-message p {
+    margin: 0 0 10px 0;
+  }
+  
+  .error-message a {
+    color: #ff0000;
+    text-decoration: underline;
+  }
+  
