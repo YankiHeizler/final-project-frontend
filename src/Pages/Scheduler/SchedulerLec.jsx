@@ -116,7 +116,7 @@ function ScheduleLec({ tokenID }) {
                         <div className="lecturers-listL">
                             <PopupComponent onDateChanged={(date) => setDate(date)} />
                             <h2>My Connections</h2>
-                            <h3 key={tokenID} className="button-likeL" onClick={() => handleMyScheduleClickLec(date)}>My Schedule</h3>
+                            <h3 key={tokenID} className="button-likeL" onClick={() => handleMyScheduleClickLec(date)}>מרצים שלי </h3>
                             {conecshenLec && conecshenLec.connectionStudLec && (
                                 <ul>{console.log(conecshenLec.connectionStudLec)}
                                     {conecshenLec.connectionStudLec.map((connection, index) => (
