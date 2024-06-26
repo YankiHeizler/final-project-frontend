@@ -284,7 +284,7 @@ function Schedulerr({ tokenID }) {
   const [date, setDate] = useState(new Date());
   const [connectionId, setConnectionId] = useState(null);
   const [Change_color_for_connect_button, set_Change_color_for_connect_button] = useState(null);
-
+  const [specificConnection, setSpecificConnection] = useState({});
   const isMounted = useRef(false);
 
   const fetchStudentData = async (date = new Date()) => {
@@ -333,6 +333,7 @@ function Schedulerr({ tokenID }) {
   const handleConnectionsClick = async (connection, date = new Date()) => {
     setLoadingMySchedule(true);
     setLoadingConnection(true);
+    setSpecificConnection(connection)
     try {
       const data = await getConnectionSchedule(connection._id, date);
       if (isMounted.current) {
@@ -377,7 +378,7 @@ function Schedulerr({ tokenID }) {
           <div className="spinner"></div>
         ) : (
           <>
-            <Calendar isLecture={isLecture} schedule={displayedSchedule} connectionForId={connectionId} />
+            <Calendar isLecture={isLecture} schedule={displayedSchedule} connectionForId={connectionId} specificConnection={specificConnection}/>
             <div className="lecturers-list">
               <PopupComponent onDateChanged={(date) => setDate(date)} />
               <h2>My Connections</h2>

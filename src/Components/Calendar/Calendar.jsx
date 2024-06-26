@@ -6,7 +6,7 @@ import { postSetLesson, getStudentData } from "../../Pages/Scheduler/Scheduler.h
 import React, { useState, useEffect } from "react";
 import "./Calendar.css"; // ייבוא קובץ CSS לעיצוב בסיסי
 
-const Calendar = ({ schedule, isLecture, connectionForId }) => {
+const Calendar = ({ schedule, isLecture, connectionForId,specificConnection }) => {
   const [showPopupAv, setShowPopupAv] = useState(false);
   const [showPopupBocd, setShowPopupBocd] = useState(false);
   const [currentLesson, setCurrentLesson] = useState(null);
@@ -45,31 +45,58 @@ const Calendar = ({ schedule, isLecture, connectionForId }) => {
     setShowPopupBocd(true);
   };
 
+  // const handleSendingMessage = async (e) => {
+  //   e.preventDefault();
+  //   const data = {
+  //     lessID: lessonData.lesson.lessID,
+  //     lessMessage: studentMessage
+  //   };
+  //   putmessage(data)
+  //   async function putmessage(data) {
+  //     try {
+  //       let res = await axios.put(`http://localhost:3008/api/lessonsStudLec/messages/${data.lessID}`, {
+  //         withCredentials: true,
+  //         data: { lessMessage: studentMessage }
+  //       });
+  //       alert('ההודעה נשלחה בהצלחה');
+  //       return res.data;
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  //   handleClosePopupBocd()
+
+  //   await putmessage(data);
+  //   await refreshSchedule();
+  // };
+
+
   const handleSendingMessage = async (e) => {
     e.preventDefault();
+  
+    if (studentMessage.trim() === "") {
+      alert('הודעה ריקה לא נשלחה');
+      return;
+    }
+  
     const data = {
       lessID: lessonData.lesson.lessID,
       lessMessage: studentMessage
     };
-
-    async function putmessage(data) {
-      try {
-        let res = await axios.put(`http://localhost:3008/api/lessonsStudLec/${data.lessID}`, {
-          withCredentials: true,
-          data: { lessMessage: studentMessage }
-        });
-        alert('ההודעה נשלחה בהצלחה');
-        return res.data;
-      } catch (error) {
-        console.error(error);
-      }
+  
+    try {
+      const res = await axios.put(`http://localhost:3008/api/lessonsStudLec/messages/${data.lessID}`, 
+        { lessMessage: studentMessage }, 
+        { withCredentials: true }
+      );
+      alert('ההודעה נשלחה בהצלחה');
+      handleClosePopupBocd();
+      await refreshSchedule();
+    } catch (error) {
+      console.error('Error sending message:', error);
     }
-    handleClosePopupBocd()
-
-    await putmessage(data);
-    await refreshSchedule();
   };
-
+  
   const handleClosePopupBocd = () => {
     return new Promise((resolve) => {
       setShowPopupBocd(false);
@@ -92,6 +119,7 @@ const Calendar = ({ schedule, isLecture, connectionForId }) => {
   const lessonClick = (lesson, dayIndex) => {
     let formass = { lesson: lesson, dayIndex: dayIndex };
     setLessonData(formass);
+    console.log(lesson.lessID);
     handleOpenPopupBocd();
   };
 
@@ -191,7 +219,7 @@ const Calendar = ({ schedule, isLecture, connectionForId }) => {
         <div className="popupBack">
           <div className="popup">
             <h2></h2>
-            <p>תוכן הפופאפ</p>
+            
             <form onSubmit={handleSendingMessage}>
               <div className="stack-container">
                 <label htmlFor="message">שלח הודעה למרצה</label>
@@ -200,10 +228,20 @@ const Calendar = ({ schedule, isLecture, connectionForId }) => {
                   onChange={(e) => setStudentMessage(e.target.value)}
                 ></textarea>
               </div>
-              <button type="submit" >שליחה</button>
+              <button  type="submit"  >שליחה</button>
             </form>
             <button onClick={delLesson}>ביטול שיעור</button>
             <button onClick={handleClosePopupBocd}>סגור</button>
+            <div className="messages">
+              <h3>הודעות קודמות:</h3>
+              {lessonData.lesson?.lessMessage && lessonData.lesson.lessMessage.length > 0 && lessonData.lesson.lessMessage.some(msg => msg && typeof msg === 'string' && msg.trim()) ? (
+                lessonData.lesson.lessMessage.map((msg, index) => (
+                  msg && typeof msg === 'string' && msg.trim() && <p key={index}>{msg.trim()}</p>
+                ))
+              ) : (
+                <p>אין הודעות</p>
+              )}
+            </div>
           </div>
         </div>
       )}
