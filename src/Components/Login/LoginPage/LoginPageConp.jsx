@@ -106,7 +106,10 @@ function Login({ fields, func, titel }) {
           
         const res = await axios.post('http://localhost:3008/api/connectionStudLec',dataToServer,{withCredentials:true});
         } 
-        navigate('/studentarea');
+        if (data ["isLecturerurl"] == true)
+          navigate('/schedulerLec');
+        else
+          navigate('/studentarea')
        
       
     } catch (error) {
