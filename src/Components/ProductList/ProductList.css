@@ -36,7 +36,7 @@
 
 .language-details h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 3;
 }
 
 .language-details h2 {
@@ -70,4 +70,12 @@
 .language-footer button:active {
   background-color: #00008b;
   transform: scale(0.95);
+}
+.lecturer-description {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.lecturer-description::-webkit-scrollbar {
+  display: none;
 }

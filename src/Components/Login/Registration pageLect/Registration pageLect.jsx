@@ -34,7 +34,7 @@ const RegistrationPageLect = () => {
   const login = async (data ) => {
     const url = CREATLECTURERURL
     const userDetails = data
-    const res = await axios.post(url, { userDetails })
+    const res = await axios.post(url, { userDetails }, { withCredentials: true })
     return (res)
   }
   return (

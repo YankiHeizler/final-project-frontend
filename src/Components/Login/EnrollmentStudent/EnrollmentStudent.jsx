@@ -28,7 +28,7 @@ const EnrollmentStudent = () => {
           const url = CREATSTUDENTURL
           const userDetails = data
           console.log(userDetails);
-            const res = await axios.post(url, {userDetails} )
+            const res = await axios.post(url, {userDetails} , { withCredentials: true })
             return (res)
         }
   return (
